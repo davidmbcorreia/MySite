@@ -12,6 +12,6 @@
         "ApexComponent",
         "ApexPage",
         "ApexTrigger",
-        "StaticResource"
+        "CustomObject"
     ]
 }
