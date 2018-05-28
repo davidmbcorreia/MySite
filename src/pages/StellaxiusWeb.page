@@ -64,7 +64,7 @@
 <li class="page-scroll"> <a href="{!siteBase}?#culture">Culture</a> </li>
 <li class="page-scroll"> <a href="{!siteBase}?#team">Team</a> </li>
 -->
-                                    <li class="page-scroll"> <a href="{!siteBase}?#join-us">Join Us</a> </li>
+                                    <li class="page-scroll"> <a href="{!siteBase}?#join-us">Join Us Now</a> </li>
                                     <!--
 <li class="page-scroll"> <a href="{!siteBase}?#testimonials">Testimonials</a> </li>
 -->
