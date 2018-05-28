@@ -86,7 +86,7 @@
     <!-- Shows deploying code, running all tests, and running tests (1 of which fails), and logging. -->
     <target name="deployCodeFailingTest">
       <!-- Upload the contents of the "codepkg" package, running all tests -->
-      <sf:deploy username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="codepkg" testLevel="RunAllTestsInOrg" rollbackOnError="true" logType="Debugonly"/>
+      <sf:deploy username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="src" testLevel="RunAllTestsInOrg" rollbackOnError="true" logType="Debugonly"/>
     </target>
 
     <!-- Shows check only; never actually saves to the server -->
