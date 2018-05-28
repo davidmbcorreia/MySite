@@ -1,0 +1,288 @@
+<apex:page Controller="LRN_Page_Controller" sidebar="false"  showHeader="false" action="{!page_exam_load}" >
+    <head>
+        <apex:includeScript value="{!URLFOR($Resource.LRN_Resources, 'js/lrn_exam.js')}"/>
+        <script>
+            function runForceEnded( var1 ) {
+                if ( var1 === 'true' ) {
+                    callFinalResultJob();
+                }
+            }
+        </script>
+    </head>
+    <body oncontextmenu="return false;"></body>
+
+    <apex:form >
+        <apex:actionfunction name="callQuestionJob" action="{!callQuestion}" rerender="theQuestion, numQuestionText, theButtons, theCorrectAnswer, theExamQuestionPanel" >
+            <apex:param name="callQuestionName" value="" assignTo="{!idGoToQuestion}" />
+        </apex:actionfunction>
+        <apex:actionfunction name="callMarkUnmarkJob" action="{!markUnmarkQuestion}" rerender="theButtons" />
+        <apex:actionfunction name="startExamJob" action="{!startExame}" rerender="theExamQuestionPanel, theInitialInfoPanel, theHeaderPanel, timeClock" >
+            <apex:param name="callQuestion2Name" value="" assignTo="{!idGoToQuestion}" />
+        </apex:actionfunction>
+        <apex:actionfunction name="callStrikethroughJob" action="{!strikethroughAnswer}" rerender="theExamQuestionPanel" >
+            <apex:param name="callStrikethroughName" value="" assignTo="{!idGoToAnswer}" />
+        </apex:actionfunction>
+        <apex:actionfunction name="callSelectValueJob" action="{!selectValue}" rerender="theExamQuestionPanel" >
+            <apex:param name="callSelectValueName" value="" assignTo="{!idGoToAnswer}" />
+        </apex:actionfunction>
+        <apex:actionfunction name="callSummaryPageJob" action="{!callSummaryPage}" rerender="theExamSummaryPanel, theExamQuestionPanel, numQuestionText" />
+        <apex:actionfunction name="callReviewJob" action="{!callReview}" rerender="theExamSummaryPanel, theExamQuestionPanel, theInitialInfoPanel, numQuestionText" >
+            <apex:param name="callReview" value="" assignTo="{!reviewDetail}" />
+        </apex:actionfunction>
+        <apex:actionfunction name="callFinalEvaluationJob" action="{!callFinalEvaluation}" rerender="theExamSummaryPanel, theExamQuestionPanel, theHeaderPanel, theEvaluationPanel, theResultPanel," />
+        <apex:actionfunction name="callFinalResultJob" action="{!callFinalResult}" rerender="theExamSummaryPanel, theExamQuestionPanel, theHeaderPanel, theEvaluationPanel, theResultPanel" />
+    
+        <apex:outputPanel id="theHeaderPanel">
+            <apex:pageBlock id="theHeader" rendered="{!showHeaderPanel}">
+                <apex:outputPanel style=" width: 100%;font-size: 16px; text-align: center; padding-top: 10px; padding-bottom: 10px;" layout="block">
+                    <table id="TableAnswer" style=" width: 100%;" >
+                        <tr>
+                            <td style="width: 30%; text-align: left;">
+                                <apex:outputText id="numQuestionText" value="Question {!currQuestion.questionNumber} of {!totalQuestion}" rendered="{!isExamRunning}" />
+                            </td><td>
+                                <apex:outputText value="{!currExamTemplate.name}"/>
+                            </td><td style="width: 30%; text-align: right;">
+                                <apex:outputPanel id="timeClock" rendered="{!isExamRunning}" >
+                                    <apex:outputText value="{0,date,HH:mm}" id="timer">
+                                        <apex:param value="{!timerCount}"/>
+                                    </apex:outputText>
+                                    <apex:actionPoller action="{!showtime}" reRender="timer" interval="10" enabled="{!isExamRunning}" oncomplete="runForceEnded('{!forceEnded}');"/>
+                                </apex:outputPanel>
+                            </td>
+                        </tr>
+                    </table>
+                </apex:outputPanel>
+            </apex:pageBlock>
+        </apex:outputPanel>
+
+        <apex:outputPanel id="theExamQuestionPanel">
+            <apex:pageBlock id="theQuestion" rendered="{!OR(AND(showEvaluationPanel, currQuestion.questionNumber!=null),showExamBodyPanel)}">
+                <table style=" width: 100%; padding-top: 10px; padding-bottom: 10px; font-weight: bold;">
+                    <tr>
+                        <td style="width: 20px; text-align: left;">
+                            <apex:outputText value="{!currQuestion.questionNumber}." />
+                        </td><td>
+                            <apex:outputText value="{!currQuestion.question}"/>
+                        </td>
+                    </tr>
+                </table>
+                <table style=" width: 100%;">
+                    <apex:repeat value="{!currQuestion.lstAnswers}" var="currAnswer">
+                        <tr onmousedown="{!showExamBodyPanel} ? mouseClick('{!currAnswer.idAnswer}') :'' ;return false;" >
+                            <td style="width: 20px; text-align: center;">
+                                <apex:inputCheckbox value="{!currAnswer.value}" disabled="{!NOT(isExamRunning)}"/>
+                            </td><td style="width: 20px; text-align: center;">
+                                <apex:outputText style="font-weight: bold;" value="{!currAnswer.labelAnswer}" />
+                            </td><td style="{!IF( AND(currExamTemplate.Allow_Strikethrough__c, currAnswer.isMarked) , 'text-decoration: line-through;', '')}">
+                                <apex:outputText value="{!currAnswer.answer}"/>
+                            </td>
+                        </tr>
+                    </apex:repeat>
+                </table>
+                <apex:outputPanel id="theCorrectAnswer" rendered="{!showEvaluationPanel}">
+                    <table style=" width: 100%; padding-top: 10px; padding-bottom: 10px; font-weight: bold;">
+                        <tr>
+                            <td style="width: 20px; text-align: left;">
+                                <apex:outputText value="Correct Answer: " />
+                            </td>
+                        </tr>
+                    </table>
+                    <table style=" width: 100%;">
+                        <apex:repeat value="{!currQuestion.lstCorrectAnswers}" var="currCorrectAnswer">
+                            <tr style="{!IF( currCorrectAnswer.value, 'font-weight: bold;', '')}" >
+                                <td style="{!IF( currCorrectAnswer.value, 'width: 20px; text-align: center;', 'width: 20px; text-align: right;')}">
+                                    <apex:outputText value="{!currCorrectAnswer.labelAnswer}" />
+                                </td><td>
+                                    <apex:outputText value="{!currCorrectAnswer.description}"/>
+                                </td>
+                            </tr>
+                        </apex:repeat>
+                    </table>
+                </apex:outputPanel>
+            </apex:pageBlock>
+            <apex:pageBlock id="theButtons" rendered="{!AND(showExamBodyPanel,currExam.Status__c != 'validating')}">
+                <table style=" width: 100%;">
+                    <tr>
+                        <td style="width: 33%; text-align: center;">
+                            <apex:commandButton id="btnPreviousPage" value="Previous Question" onclick="callQuestionJob('{!currQuestion.idPreviousQuestion}'); return false;" rendered="{!currExamTemplate.Allow_Go_Previous__c}" disabled="{!OR(currQuestion.idPreviousQuestion == null, NOT(OR(currExamTemplate.Allow_Unanswered__c, currQuestion.isAnswered)))}" /> 
+                        </td><td style="text-align: center;">
+                            <apex:commandButton id="btnMarkForReview" value="Mark Question" onclick="callMarkUnmarkJob();return false;" rendered="{!NOT(currQuestion.isMarked)}" />
+                            <apex:commandButton style="border: 2px solid #008CBA;background-image:none;" id="btnUnMarkForReview" value="Unmark Question" onclick="callMarkUnmarkJob();return false;" rendered="{!currQuestion.isMarked}" />
+                        </td><td style="width: 33%; text-align: center;">
+                            <apex:commandButton id="btnNextPage" value="Next Question" onclick="callQuestionJob('{!currQuestion.idNextQuestion}'); return false;" rendered="{!currQuestion.idNextQuestion != null}" disabled="{!NOT(OR(currExamTemplate.Allow_Unanswered__c, currQuestion.isAnswered))}" />
+                            <apex:commandButton id="btnSummaryPage" value="Next Question" onclick="callSummaryPageJob(); return false;" rendered="{!currQuestion.idNextQuestion == null}" disabled="{!NOT(OR(currExamTemplate.Allow_Unanswered__c, currQuestion.isAnswered))}" /> 
+                        </td>
+                    </tr>
+                </table>
+            </apex:pageBlock>
+        </apex:outputPanel>
+
+        <apex:outputPanel id="theExamSummaryPanel">
+            <apex:pageBlock id="theSummary" rendered="{!showSummaryPanel}">
+                <table style="width: 100%; text-align: center; font-weight: bold;">
+                    <tr>
+                        <td></td>
+                        <apex:repeat value="{!lstQuestionWrapperlst}" var="lstQuestionWrapper">
+                            <td style="width: 120px;">
+                                <table style="width: 100%; text-align: center;">
+                                    <tr>
+                                        <td style="width: 33%;">#</td>
+                                        <td style="width: 33%;">Answ</td>
+                                        <td style="width: 33%;">Mark</td>
+                                    </tr>
+                                    <apex:repeat value="{!lstQuestionWrapper}" var="question">
+                                        <tr>
+                                            <td><apex:outputText value="{!question.questionNumber}" /></td>
+                                            <td><apex:inputCheckbox disabled="true" value="{!question.isAnswered}" /></td>
+                                            <td><apex:inputCheckbox disabled="true" value="{!question.isMarked}" /></td>
+                                        </tr>
+                                    </apex:repeat>
+                                </table>
+                            </td>
+                            <td></td>
+                        </apex:repeat>
+                    </tr>
+                </table>
+            </apex:pageBlock>
+            <apex:pageBlock id="theButtonsSummary" rendered="{!showSummaryPanel}">
+                <table style=" width: 100%;">
+                    <tr>
+                        <td style="width: 25%" />
+                        <td style="width: 25%; text-align: center;">
+                            <apex:commandButton id="btnReviewAll" value="Review All Questions" onclick="callReviewJob('full'); return false;" /> 
+                        </td><td style="width: 25%; text-align: center;">
+                            <apex:commandButton id="btnReviewMarked" value="Review Marked/Unanswered" disabled="{!NOT(allowReviewMarked)}" onclick="callReviewJob('partial');return false;" />
+                        </td><td style="width: 25%; text-align: center;">
+                            <apex:commandButton id="btnFinalize" value="Finish" onclick="callFinalResultJob(); return false;" />
+                        </td>
+                    </tr>
+                </table>
+            </apex:pageBlock>
+        </apex:outputPanel>
+
+        <apex:outputPanel id="theResultPanel">
+            <apex:pageBlock id="theResult" rendered="{!showResultPanel}">
+                <table width="100%">
+                    <tr>
+                        <td colspan="3" style="text-align: center; font-weight: bold;">
+                            <apex:outputText style="font-size: 130%;" value="Examination Result: {!finalScore.examinationResult}" />
+                        </td>
+                    </tr><tr>
+                        <td colspan="3" style="text-align: center; font-weight: bold;">
+                            <apex:outputText value="Score: "/>
+                            <apex:outputText value="{0, number, 0.0}">
+                                <apex:param value="{!finalScore.percScoreEvaluated}" />
+                            </apex:outputText>
+                            <apex:outputText value="% - {!finalScore.totalCorrectEvaluated}/"/>
+                            <apex:outputText value="{!finalScore.totalEvaluated}"/>
+                            <apex:outputText style="color:darkblue;" value=" (" rendered="{!IF(finalScore.totalEvaluated == finalScore.total, false,true)}" /> 
+                            <apex:outputText style="color:darkblue;" value="{0, number, 0.0}" rendered="{!IF(finalScore.totalEvaluated == finalScore.total, false,true)}">
+                                <apex:param value="{!finalScore.percScore}" />
+                            </apex:outputText>
+                            <apex:outputText style="color:darkblue;" value="% - {!finalScore.totalCorrect}/"  rendered="{!IF(finalScore.totalEvaluated == finalScore.total, false,true)}"/>
+                            <apex:outputText style="color:darkblue;" value="{!finalScore.total} )" rendered="{!IF(finalScore.totalEvaluated == finalScore.total, false,true)}" />
+                        </td>
+                    </tr><tr>
+                        <td><div style="min-height: 30px;" /> </td>
+                    </tr><tr>
+                        <td style="width: 20%"></td>
+                        <td style="text-align: center; font-weight: bold; min-width: 400px; max-width: 600px;">
+                            <table style="width: 100%; text-align: center;">
+                                <tr style="text-align: center; font-weight: bold;">
+                                    <td style="padding-bottom: 10px;text-align: left;"><apex:outputText value="Domain Area" /></td>
+                                    <td style="padding-bottom: 10px;text-align: center;"><apex:outputText value="Domain Result" /></td>
+                                    <td style="padding-bottom: 10px;text-align: center;"><apex:outputText value="Domain Score" /></td>
+                                </tr>
+                                <apex:repeat value="{!finalScore.lstDomainScore}" var="domain">
+                                <tr>
+                                    <td style="text-align: left; font-weight: bold;"><apex:outputText value="{!domain.domainName}"/></td>
+                                    <td style="text-align: center; font-weight: normal;padding-left: 15px; padding-right: 15px;"><apex:outputText value="{!domain.domainResult}"/></td>
+                                    <td style="text-align: center; font-weight: normal;">
+                                        <apex:outputText value="{0, number, 0.0}">
+                                            <apex:param value="{!domain.percScoreEvaluated}" />
+                                        </apex:outputText>
+                                        <apex:outputText value="% - {!domain.totalCorrectEvaluated}/"/>
+                                        <apex:outputText value="{!domain.totalEvaluated}"/>
+                                        <apex:outputText style="color:darkblue;" value=" (" rendered="{!IF(finalScore.totalEvaluated == finalScore.total, false,true)}" /> 
+                                        <apex:outputText style="color:darkblue;" value="{0, number, 0.0}" rendered="{!IF(finalScore.totalEvaluated == finalScore.total, false,true)}">
+                                            <apex:param value="{!domain.percScore}" />
+                                        </apex:outputText>
+                                        <apex:outputText style="color:darkblue;" value="% - {!domain.totalCorrect}/" rendered="{!IF(finalScore.totalEvaluated == finalScore.total, false,true)}"/>
+                                        <apex:outputText style="color:darkblue;" value="{!domain.total} )" rendered="{!IF(finalScore.totalEvaluated == finalScore.total, false,true)}"/>
+                                    </td>
+                                </tr>
+                                </apex:repeat>
+                            </table>
+                        </td>
+                        <td style="width: 20%"></td>
+                    </tr>
+                </table>
+            </apex:pageBlock>
+            <apex:pageBlock id="theButtonsResult" rendered="{!showResultPanel}">
+                <table style=" width: 100%;">
+                    <tr>
+                        <td style="text-align: center;" >
+                            <apex:commandButton id="btnFinalize" value="Validate Exam Questions" onclick="callFinalEvaluationJob(); return false;" />
+                        </td>
+                    </tr>
+                </table>
+            </apex:pageBlock>
+        </apex:outputPanel>
+        
+        <apex:outputPanel id="theInitialInfoPanel">
+            <apex:pageBlock id="theInitialInfo" rendered="{!showInitialInfoPanel}">
+                <table style="width: 100%; text-align: center;">
+                    <tr>
+                        <td>
+                            <apex:outputText value="Important notes:"/>
+                            <p>
+                                <apex:outputText value="this exam was created with n questions randomly selected from the group of total questions available in system; " /> 
+                            </p>
+                            <apex:outputText value="from the n questions presented, only y will be considered into final evaluation;" />
+                            <br>
+                            <apex:outputText value="an overral pass/fail result is generated based on the number of questions answered correctly; " /> 
+                            </br>
+                            <apex:outputText value="the exame has questions of the ; " />
+                            <apex:outputText value="the distribution of questions dificult per area is: x% easy, y% medium and z% hard questions" /> 
+                        </td>
+                    </tr><tr>
+                        <td>
+                            <apex:commandButton id="btnStartExam" value="Start" onclick="startExamJob('{!idGoToQuestion}');return false;"/> 
+                        </td>
+                    </tr>
+                </table>
+            </apex:pageBlock>
+        </apex:outputPanel>
+
+        <apex:outputPanel id="theEvaluationPanel">
+            <apex:pageBlock id="theEvaluation" rendered="{!showEvaluationPanel}">
+                <table style="width: 100%; text-align: center; font-weight: bold;">
+                    <tr>
+                        <td></td>
+                        <apex:repeat value="{!lstQuestionWrapperlst}" var="lstQuestionWrapper">
+                            <td style="width: 80px;">
+                                <table style="width: 100%; text-align: center;">
+                                    <tr>
+                                        <td colspan="2" style="width: 50%;">#</td>
+                                    </tr>
+                                    <apex:repeat value="{!lstQuestionWrapper}" var="question">
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                <apex:commandLink id="lnkquestion" value="{!question.questionNumber}" onclick="callQuestionJob('{!question.idQuestion}'); return false;" style="{!IF(question.isEvaluated, '','color:darkblue;')}" reRender="theQuestion, theExamQuestionPanel" />
+                                            </td>
+                                            <td style="text-align: left;">
+                                                <apex:image url="{!URLFOR($Resource.LRN_Resources, 'pictures/right-icon.png')}" height="10" title="correct" rendered="{!question.isCorrect}" />
+                                                <apex:image url="{!URLFOR($Resource.LRN_Resources, 'pictures/wrong-icon.png')}" height="10" title="fail" rendered="{!NOT(question.isCorrect)}" />
+                                            </td>
+                                        </tr>
+                                    </apex:repeat>
+                                </table>
+                            </td>
+                            <td></td>
+                        </apex:repeat>
+                    </tr>
+                </table>
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,18 @@
+{
+    "users": [
+        "005580000036PGZAA2"
+    ],
+    "logType": "USER_DEBUG",
+    "debugLevelName": "MAVENSMATE",
+    "levels": {
+        "Workflow": "INFO",
+        "Callout": "INFO",
+        "System": "DEBUG",
+        "Database": "INFO",
+        "ApexCode": "DEBUG",
+        "ApexProfiling": "INFO",
+        "Validation": "INFO",
+        "Visualforce": "DEBUG"
+    },
+    "expiration": 480
+}

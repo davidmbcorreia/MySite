@@ -1,0 +1,70 @@
+<apex:page controller="LRN_Page_Controller" contenttype="application/vnd.ms-excel#{!currExamTemplate.Name}_template.xls" cache="true" showheader="false">
+    <Table>
+        <tr>
+            <th>Ident</th>
+            <th>Q/A</th>
+            <th>Question/Answer</th>
+            <th>Area</th>
+            <th>Value</th>
+            <th>Description</th>
+            <th>Difficulty</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Q</td>
+            <td>Question</td>
+            <td>Area of knowledge</td>
+            <td></td>
+            <td>General description, This text will be put as final text explaining the answer (not mandatory).</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>A</td>
+            <td>Answer 1</td>
+            <td></td>
+            <td>false</td>
+            <td>Answer description, This text will be put as description of the answer (not mandatory).</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>A</td>
+            <td>Answer 2</td>
+            <td></td>
+            <td>true</td>
+            <td>Answer description, This text will be put as description of the answer (not mandatory).</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>A</td>
+            <td>Answer 3</td>
+            <td></td>
+            <td>false</td>
+            <td>Answer description, This text will be put as description of the answer (not mandatory).</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>A</td>
+            <td>Answer 4</td>
+            <td></td>
+            <td>false</td>
+            <td>Answer description, This text will be put as description of the answer (not mandatory).</td>
+            <td>Medium</td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>
+            <th>Area of knowledge:</th>
+            <td>[Leave blank] - will be assigned to generic area, not be taken in consderation to create exams until manual assignment of correct area.</td>
+        </tr>
+        <apex:repeat value="{!lstTemplateAreas}" var="area">
+            <tr>
+                <td></td>
+                <td>{!area.Knowledge_Area__c}</td>
+            </tr>
+        </apex:repeat>
+    </Table>
+</apex:page>

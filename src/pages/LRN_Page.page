@@ -1,0 +1,384 @@
+<apex:page Controller="LRN_Page_Controller" sidebar="false" action="{!page_load}" docType="html-5.0" >
+    <head>
+        <apex:stylesheet value="{!URLFOR($Resource.LRN_Resources, 'css/lrn_management.css')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.LRN_Resources, 'css/lrn_page.css')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.LRN_Resources, 'js/es5-shim.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.LRN_Resources, 'js/jszip.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.LRN_Resources, 'js/xlsx.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.LRN_Resources, 'js/lrn_page.js')}"/>
+        <script>
+            function retrieveChartData(callback) {
+                var templateId = document.getElementById('tempExamId').value;
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.LRN_Page_Controller.getRemoteGraphData}', 
+                    templateId,
+                    function(result, event) {
+                        if(event.status && result && (result.constructor === Array)) {
+                            callback(result);
+                            RemotingChart.show();
+                        }
+                        else if (event.type === 'exception') {
+                            document.getElementById("remoteResponseErrors").innerHTML = event.message + '<br/>' + event.where;
+                        }
+                        else {
+                            document.getElementById("remoteResponseErrors").innerHTML = event.message;
+                        }
+                    },
+                    { escape: true }
+                );
+            }
+        </script>
+    </head>
+
+    <apex:form id="header">
+        <apex:actionfunction name="callShowExameTemplateJob" action="{!showExameTemplate}" rerender="theExamTemplateTablePanel, theViewTemplatePanel" >
+            <apex:param name="showExameTemplateName" value="" assignTo="{!idTemplate}" />
+        </apex:actionFunction>
+        <apex:actionfunction name="callEditExameTemplateJob" action="{!editExameTemplate}" rerender="theExamTemplateTablePanel, theViewTemplatePanel, theEditTemplatePanel" >
+            <apex:param name="showExameTemplateName" value="" assignTo="{!idTemplate}" />
+        </apex:actionFunction>
+        <apex:actionfunction name="callDeleteExameTemplateJob" action="{!deleteExameTemplate}" rerender="theExamTemplateTablePanel" >
+            <apex:param name="showExameTemplateName" value="" assignTo="{!idTemplate}" />
+        </apex:actionFunction>
+        <apex:actionfunction name="callDeleteExameAreaTemplateJob" action="{!deleteExameAreaTemplate}" rerender="theEditTemplatePanel" >
+            <apex:param name="showExameTemplateName" value="" assignTo="{!idAreaTemplate}" />
+        </apex:actionFunction>
+        <apex:actionfunction name="editTemplateJob" action="{!editTemplate}" rerender="theEditTemplatePanel" >
+            <apex:param name="showExameTemplateName" value="" assignTo="{!idTemplate}" />
+        </apex:actionfunction>
+        <apex:actionfunction name="editAreaTemplateJob" action="{!editAreaTemplate}" rerender="theEditTemplatePanel" >
+            <apex:param name="showExameTemplateName" value="" assignTo="{!idTemplate}" />
+        </apex:actionfunction>
+        <apex:actionfunction name="cancelTemplateJob" action="{!cancelExameTemplate}" rerender="theEditTemplatePanel, theExamTemplateTablePanel" >
+            <apex:param name="showExameTemplateName" value="" assignTo="{!idTemplate}" />
+        </apex:actionfunction>
+        <apex:actionfunction name="saveTemplateJob" action="{!saveExameTemplate}" rerender="theEditTemplatePanel" />
+        <apex:actionfunction name="saveAreaTemplateJob" action="{!saveExameTemplateAreas}" rerender="theEditTemplatePanel" />
+        <apex:actionfunction name="callBackListJob" action="{!backTemplateList}" rerender="theEditTemplatePanel, theExamTemplateTablePanel, theViewTemplatePanel" />
+        <apex:actionfunction name="addAreaTemplateJob" action="{!addExameTemplateArea}" rerender="theEditTemplatePanel" />
+        <apex:actionFunction name="passStringToUploadDataTosObject" action="{!uploadFile}" rerender="pgMessages">
+            <apex:param name="data" value="" assignTo="{!myFile}" />
+        </apex:actionFunction>
+        <apex:actionFunction name="callScoreExam" action="{!callScoreExam}" rerender="showScorePanel">
+            <apex:param name="data" value="" assignTo="{!idExamShow}" />
+        </apex:actionFunction>
+        
+        
+        <apex:outputPanel id="theExamTemplateTablePanel" >
+            <apex:pageBlock rendered="{!showExamTemplateTablePanel}"  >
+                <apex:pageBlockTable id="examTemplateTable" value="{!lstExamTemplates}" var="exam">
+                    <apex:column headerValue="Actions">
+                        <apex:outputPanel rendered="{!IF(exam.Id != null, true, false)}" >
+                            <table><tr><td><apex:commandButton image="{!URLFOR($Resource.LRN_Resources, 'pictures/edit.png')}" onClick="callEditExameTemplateJob('{!exam.Id}');return false;" title="edit template" /></td>
+                            <td><apex:commandButton image="{!URLFOR($Resource.LRN_Resources, 'pictures/garbage.png')}" onClick="deleteTemplate('{!exam.Id}');return false;" title="delete template" rendered="{!userMayDelete}" /></td></tr></table>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!IF(AND(exam.Id == null, userMayDelete), true, false)}" >
+                            <table><tr><td><apex:commandButton image="{!URLFOR($Resource.LRN_Resources, 'pictures/add.png')}" onClick="callEditExameTemplateJob();return false;" title="add new template" /></td></tr></table>
+                        </apex:outputPanel>
+                    </apex:column>
+                    <apex:column headerValue="Formation/Certification" onClick="callShowExameTemplateJob('{!exam.Id}');return false;" >
+                        <apex:outputText value="{!exam.name}" />
+                    </apex:column>
+                    <apex:column headerValue="Descripion" onClick="callShowExameTemplateJob('{!exam.Id}');return false;" >
+                        <apex:outputText value="{!exam.Description__c}"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+                <apex:pageBlockSection columns="2">
+                    <apex:pageBlock >
+                        <apex:pageBlockTable id="examTemplateTable" value="{!lstExamTemplates}" var="exam">
+                        </apex:pageBlockTable>
+                    </apex:pageBlock>
+                    <apex:pageBlock >
+                        <apex:pageBlockTable id="examTopTable" value="{!lstTopExams}" var="topExam">
+                            <apex:column headerValue="Exam">
+                                <apex:outputText value="{!topExam.examName}" />
+                            </apex:column>
+                            <apex:column headerValue="Size">
+                                <apex:outputText value="{!topExam.examSize}" />
+                            </apex:column>
+                            <apex:column headerValue="Score">
+                                <apex:outputText value="{!topExam.percScore}" />
+                            </apex:column>
+                            <apex:column headerValue="User">
+                                <apex:outputText value="{!topExam.studentName}" />
+                            </apex:column>
+                        </apex:pageBlockTable>
+                    </apex:pageBlock>
+                </apex:pageBlockSection>
+
+            </apex:pageBlock>
+        </apex:outputPanel>
+
+        <apex:outputPanel id="theEditTemplatePanel">
+            <apex:pageBlock rendered="{!showEditTemplatePanel}" mode="maindetail" >
+                <apex:tabPanel switchType="client" id="slipTabPanel" selectedTab="tab1">
+
+                    <apex:tab label="Question Management" name="tab1" id="tab1" rendered="{!currExamTemplate.Id != null}">
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="width: 33%"></td>
+                                <td style="text-align: center;">
+                                    <apex:commandButton id="btnBackListTab1" value="Back List" onclick="callBackListJob();return false;" rendered="true" />
+                                </td>
+                                <td style="width: 33%"></td>
+                            </tr>
+                        </table>
+                        <apex:outputPanel >
+                            <apex:pageMessages id="pgMessages" />
+                        </apex:outputPanel>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="width: 50%">
+                                    <div class="container">
+                                        <div class="panel panel-default">
+                                            <table width="100%">
+                                                <tr>
+                                                    <td style="text-align: center; font-weight: bold;">
+                                                        <apex:outputText style="font-size: 130%;" value="Upload Questions (using Exame Template)" />
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <div class="panel-body" >
+                                                <br/><br/>
+                                                <h4>Please, drag and drop file below</h4>
+                                                <br/><br/>
+                                                <div class="upload-drop-zone" id="drop">
+                                                    Just drag and drop any excel file here
+                                                </div>
+                                                <script>
+                                                    startFunction();    
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="vertical-align: top;">
+                                    <table width="100%">
+                                        <tr>
+                                            <td style="text-align: center; font-weight: bold;">
+                                                <apex:outputText style="font-size: 130%;" value="Download Exame Template" />
+                                            </td>
+                                        </tr><tr>
+                                            <td><div style="min-height: 50px;" ></div> </td>
+                                        </tr><tr>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <apex:commandButton id="btnGetExcelTemplate" value="Download" action="{!callGetExcelTemplate}" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </apex:tab>
+                    <apex:tab label="Exam Template" name="tab2" id="tab2" rendered="{!userMayDelete}">
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="width: 33%"></td>
+                                <td style="text-align: center;">
+                                    <apex:commandButton id="btnEditTemplate" value="Edit" onclick="editTemplateJob('{!currExamTemplate.Id}');return false;" rendered="{!NOT(isEditTemplate)}" />
+                                    <apex:commandButton id="btnSaveTemplate" value="Save" onclick="saveTemplateJob();return false;" rendered="{!isEditTemplate}" />
+                                    <apex:commandButton id="btnCancelTemplate" value="Cancel" onclick="cancelTemplateJob('{!currExamTemplate.Id}');return false;" rendered="{!isEditTemplate}" />
+                                    <apex:commandButton id="btnBackList" value="Back List" onclick="callBackListJob();return false;" rendered="{!NOT(isEditTemplate)}" />
+                                </td>
+                                <td style="width: 33%"></td>
+                            </tr>
+                        </table>
+                        <apex:pageBlockSection columns="2">
+                            <apex:pageBlockSection columns="1">
+                                <apex:inputField styleClass="{!IF(isEditTemplate,'','disableClass')}" value="{!currExamTemplate.Name}" style="width: 400px;" />
+                                <apex:inputTextarea label="Template Name" style="resize: none;" cols="100" rows="15" value="{!currExamTemplate.Description__c}" disabled="{!NOT(isEditTemplate)}" />
+                            </apex:pageBlockSection>
+                            <apex:pageBlockSection columns="2">
+                                <apex:pageBlockSectionItem />
+                                <apex:pageBlockSectionItem />
+                                <apex:inputField styleClass="{!IF(isEditTemplate,'','disableClass')}" style="width: 50px;" value="{!currExamTemplate.Number_of_Questions_to_Validate__c}" />
+                                <apex:inputCheckbox selected="{!currExamTemplate.Allow_50_Exam__c}" disabled="{!NOT(isEditTemplate)}" />
+                                <apex:inputField styleClass="{!IF(isEditTemplate,'','disableClass')}" style="width: 50px;" value="{!currExamTemplate.Number_of_Questions__c}" />
+                                <apex:inputCheckbox selected="{!currExamTemplate.Allow_25_Exam__c}" disabled="{!NOT(isEditTemplate)}" />
+                                <apex:inputField styleClass="{!IF(isEditTemplate,'','disableClass')}" style="width: 50px;" value="{!currExamTemplate.Approval__c}"> % </apex:inputField>
+                                <apex:inputCheckbox selected="{!currExamTemplate.Allow_Go_Previous__c}" disabled="{!NOT(isEditTemplate)}" />
+                                <apex:inputField styleClass="{!IF(isEditTemplate,'','disableClass')}" style="width: 50px;" value="{!currExamTemplate.Time_To_Execute__c}" > min </apex:inputField>
+                                <apex:inputCheckbox selected="{!currExamTemplate.Allow_Random_Order_of_Answers__c}" disabled="{!NOT(isEditTemplate)}" />
+                                <apex:inputField styleClass="{!IF(isEditTemplate,'','disableClass')}" style="width: 50px;" value="{!currExamTemplate.Easy_Questions__c}"> % </apex:inputField>
+                                <apex:inputCheckbox selected="{!currExamTemplate.Allow_Strikethrough__c}" disabled="{!NOT(isEditTemplate)}" />
+                                <apex:inputField styleClass="{!IF(isEditTemplate,'','disableClass')}" style="width: 50px;" value="{!currExamTemplate.Medium_Questions__c}"> % </apex:inputField>
+                                <apex:inputCheckbox selected="{!currExamTemplate.Allow_Unanswered__c}" disabled="{!NOT(isEditTemplate)}" />
+                                <apex:inputField styleClass="{!IF(isEditTemplate,'','disableClass')}" style="width: 50px;" value="{!currExamTemplate.Hard_Questions__c}"> % </apex:inputField>
+                            </apex:pageBlockSection>
+                        </apex:pageBlockSection>        
+                        <apex:pageBlock rendered="{!AND(showEditTemplatePanel,currExamTemplate.Id != null)}" title="Knowledge Areas" mode="detail" >
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="width: 33%"></td>
+                                    <td style="text-align: center;">
+                                        <apex:commandButton id="btnEditAreaTemplate" value="Edit" onclick="editAreaTemplateJob('{!currExamTemplate.Id}');return false;" rendered="{!NOT(OR(isEditAreaTemplate,isAddAreaTemplate))}" />
+                                        <apex:commandButton id="btnSaveAreaTemplate" value="Save" onclick="saveAreaTemplateJob();return false;" rendered="{!OR(isEditAreaTemplate, isAddAreaTemplate)}" />
+                                        <apex:commandButton id="btnCancelAreaTemplate" value="Cancel" onclick="cancelTemplateJob('{!currExamTemplate.Id}');return false;" rendered="{!OR(isEditAreaTemplate, isAddAreaTemplate)}" />
+                                    </td>
+                                    <td style="width: 33%"></td>
+                                </tr>
+                            </table>
+                            <apex:pageBlockTable id="examTemplateAreaTable" value="{!lstTemplateAreas}" var="examArea">
+                                <apex:column headerValue="Actions">
+                                    <apex:outputPanel rendered="{!IF(examArea.Id != null, true, false)}" >
+                                        <apex:commandButton image="{!URLFOR($Resource.LRN_Resources, 'pictures/garbage.png')}" title="delete knowledge area" onClick="deleteAreaTemplate('{!examArea.Id}');return false;" />
+                                    </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(examArea.Id == null, true, false)}" >
+                                        <apex:commandButton image="{!URLFOR($Resource.LRN_Resources, 'pictures/add.png')}" title="add new template" onClick="addAreaTemplateJob();return false;" />
+                                    </apex:outputPanel>
+                                </apex:column>
+                                <apex:column headerValue="knowledge Area">
+                                    <apex:inputField styleClass="{!IF(OR(AND(isEditAreaTemplate, examArea.Id != null), AND(isAddAreaTemplate, examArea.Id == null)),'','disableClass')}" value="{!examArea.Knowledge_Area__c}" style="width: 600px;" />
+                                </apex:column>
+                                <apex:column headerValue="% Area Questions">
+                                    <apex:inputField styleClass="{!IF(OR(AND(isEditAreaTemplate, examArea.Id != null), AND(isAddAreaTemplate, examArea.Id == null)),'','disableClass')}" value="{!examArea.Percent_of_Area_Questions__c}" style="width: 50px;" />
+                                </apex:column>
+                                <apex:column headerValue="Order">
+                                    <apex:inputField styleClass="{!IF(OR(AND(isEditAreaTemplate, examArea.Id != null), AND(isAddAreaTemplate, examArea.Id == null)),'','disableClass')}" value="{!examArea.Order__c}" style="width: 50px;" />
+                                </apex:column>
+                            </apex:pageBlockTable>
+                        </apex:pageBlock>
+                    </apex:tab>
+                </apex:tabPanel>
+            </apex:pageBlock>
+        </apex:outputPanel>
+
+        <apex:outputPanel id="theViewTemplatePanel">
+            <apex:pageBlock rendered="{!showViewTemplatePanel}" >
+                <apex:outputPanel style=" width: 100%;font-size: 16px; text-align: center; padding-top: 20px; padding-bottom: 20px;" layout="block">
+                    <apex:outputText style="font-size: 16px; text-align: center; padding-top: 20px; padding-bottom: 20px;" value="{!currExamTemplate.name}"/>
+                </apex:outputPanel>
+                <apex:pageBlock >
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="vertical-align: text-top;">
+                                <table>
+                                    <tr>
+                                        <td>Description</td>
+                                        <td><apex:outputField value="{!currExamTemplate.Description__c}"/></td>
+                                    </tr><tr>
+                                        <td><apex:outputText value="Number of Questions (Validated/Total)"/></td>
+                                        <td><apex:outputText value="{!currExamTemplate.Number_of_Questions_to_Validate__c}"/>/<apex:outputText value="{!currExamTemplate.Number_of_Questions__c}"/></td>
+                                    </tr><tr>
+                                        <td><apex:outputText value="% value to Pass:"/></td>
+                                        <td><apex:outputText value="{!currExamTemplate.Approval__c}"/>  </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width: 600px; min-width: 500px; text-align: right;">
+                                <apex:chart name="RemotingChart" height="300" width="500" data="retrieveChartData" >
+                                    <apex:axis type="Numeric" position="left" fields="data" title="Score" grid="true"/>
+                                    <apex:axis type="Category" position="bottom" fields="name" title="Exam" />
+                                    <apex:lineSeries axis="left" fill="true" xField="name" yField="data" markerType="cross" markerSize="4" markerFill="#FF0000"/>
+                                </apex:chart>
+                                <Input id="tempExamId" type="hidden" value="{!currExamTemplate.Id}" />
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table width="100%">
+                        <tr>
+                            <td style="width: 50%; vertical-align: top;">
+                                <apex:pageBlock >
+                                    <table width="100%">
+                                        <tr>
+                                            <td colspan="3" style="text-align: center; font-weight: bold;">
+                                                <apex:outputText style="font-size: 130%;" value="Previous Exams" />
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <apex:pageBlockTable id="examTopTable" value="{!lstPreviousExams}" var="prevExam">
+                                        <apex:column headerValue="Date" onclick="callScoreExam('{!prevExam.Id}')">
+                                            <apex:outputText value="{!prevExam.Start_Date__c}" />
+                                        </apex:column>
+                                        <apex:column headerValue="Size" onclick="callScoreExam('{!prevExam.Id}')">
+                                            <apex:outputText value="{!prevExam.Exam_Size__c}" />
+                                        </apex:column>
+                                        <apex:column headerValue="Score" onclick="callScoreExam('{!prevExam.Id}')">
+                                            <apex:outputText value="{!prevExam.Score_Evaluated__c}" />
+                                        </apex:column>
+                                    </apex:pageBlockTable>
+                                </apex:pageBlock>
+                            </td><td>
+                                <apex:outputPanel id="showScorePanel">
+                                    <apex:pageBlock rendered="{!IF(finalScoreTemplate == null, false, true)}" >
+                                        <table width="100%">
+                                            <tr>
+                                                <td colspan="3" style="text-align: center; font-weight: bold;">
+                                                    <apex:outputText style="font-size: 130%;" value="Examination Result: {!finalScoreTemplate.examinationResult}" />
+                                                </td>
+                                            </tr><tr>
+                                                <td colspan="3" style="text-align: center; font-weight: bold;">
+                                                    <apex:outputText value="Score: "/>
+                                                    <apex:outputText value="{0, number, 0.0}">
+                                                        <apex:param value="{!finalScoreTemplate.percScoreEvaluated}" />
+                                                    </apex:outputText>
+                                                    <apex:outputText value="% - {!finalScoreTemplate.totalCorrectEvaluated}/"/>
+                                                    <apex:outputText value="{!finalScoreTemplate.totalEvaluated}"/>
+                                                    <apex:outputText style="color:darkblue;" value=" (" rendered="{!IF(finalScoreTemplate.totalEvaluated == finalScoreTemplate.total, false,true)}" /> 
+                                                    <apex:outputText style="color:darkblue;" value="{0, number, 0.0}" rendered="{!IF(finalScoreTemplate.totalEvaluated == finalScoreTemplate.total, false,true)}">
+                                                        <apex:param value="{!finalScoreTemplate.percScore}" />
+                                                    </apex:outputText>
+                                                    <apex:outputText style="color:darkblue;" value="% - {!finalScoreTemplate.totalCorrect}/"  rendered="{!IF(finalScoreTemplate.totalEvaluated == finalScoreTemplate.total, false,true)}"/>
+                                                    <apex:outputText style="color:darkblue;" value="{!finalScoreTemplate.total} )" rendered="{!IF(finalScoreTemplate.totalEvaluated == finalScoreTemplate.total, false,true)}" />
+                                                </td>
+                                            </tr><tr>
+                                                <td><div style="min-height: 30px;" ></div> </td>
+                                            </tr><tr>
+                                                <td style="width: 10%"></td>
+                                                <td style="text-align: center; font-weight: bold; min-width: 400px; max-width: 600px;">
+                                                    <table style="width: 100%; text-align: center;">
+                                                        <tr style="text-align: center; font-weight: bold;">
+                                                            <td style="padding-bottom: 10px;text-align: left;"><apex:outputText value="Domain Area" /></td>
+                                                            <td style="padding-bottom: 10px;text-align: center;"><apex:outputText value="Domain Result" /></td>
+                                                            <td style="padding-bottom: 10px;text-align: center;"><apex:outputText value="Domain Score" /></td>
+                                                        </tr>
+                                                        <apex:repeat value="{!finalScoreTemplate.lstDomainScore}" var="domain">
+                                                        <tr>
+                                                            <td style="text-align: left; font-weight: bold;"><apex:outputText value="{!domain.domainName}"/></td>
+                                                            <td style="text-align: center; font-weight: normal;padding-left: 15px; padding-right: 15px;"><apex:outputText value="{!domain.domainResult}"/></td>
+                                                            <td style="text-align: center; font-weight: normal;">
+                                                                <apex:outputText value="{0, number, 0.0}">
+                                                                    <apex:param value="{!domain.percScoreEvaluated}" />
+                                                                </apex:outputText>
+                                                                <apex:outputText value="% - {!domain.totalCorrectEvaluated}/"/>
+                                                                <apex:outputText value="{!domain.totalEvaluated}"/>
+                                                                <apex:outputText style="color:darkblue;" value=" (" rendered="{!IF(finalScoreTemplate.totalEvaluated == finalScoreTemplate.total, false,true)}" /> 
+                                                                <apex:outputText style="color:darkblue;" value="{0, number, 0.0}" rendered="{!IF(finalScoreTemplate.totalEvaluated == finalScoreTemplate.total, false,true)}">
+                                                                    <apex:param value="{!domain.percScore}" />
+                                                                </apex:outputText>
+                                                                <apex:outputText style="color:darkblue;" value="% - {!domain.totalCorrect}/" rendered="{!IF(finalScoreTemplate.totalEvaluated == finalScoreTemplate.total, false,true)}"/>
+                                                                <apex:outputText style="color:darkblue;" value="{!domain.total} )" rendered="{!IF(finalScoreTemplate.totalEvaluated == finalScoreTemplate.total, false,true)}"/>
+                                                            </td>
+                                                        </tr>
+                                                        </apex:repeat>
+                                                    </table>
+                                                </td>
+                                                <td style="width: 10%"></td>
+                                            </tr>
+                                        </table>
+                                    </apex:pageBlock>
+                                </apex:outputPanel>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <apex:pageBlockButtons location="top">
+                        <apex:commandButton id="btnFullExam" value="Full Exam" action="{!createExam}" oncomplete="window.open('/apex/LRN_Exam?iE={!idExam}','_blank', config='toolbar=no, menubar=no, resizable=yes, directories=no, titlebar=no, location=no');" >
+                            <apex:param name="showExameTemplateName" value="100" assignTo="{!examSize}" />
+                        </apex:commandButton> 
+                        <apex:commandButton id="btn50Exam" value="50% Exam" action="{!createExam}" disabled="{!NOT(currExamTemplate.Allow_50_Exam__c)}" oncomplete="window.open('/apex/LRN_Exam?iE={!idExam}','_blank', config='toolbar=no, menubar=no, resizable=yes, directories=no, titlebar=no, lovation=no');" >
+                            <apex:param name="showExameTemplateName" value="50" assignTo="{!examSize}" />
+                        </apex:commandButton>
+                        <apex:commandButton id="btn25Exam" value="25% Exam" action="{!createExam}" disabled="{!NOT(currExamTemplate.Allow_25_Exam__c)}" oncomplete="window.open('/apex/LRN_Exam?iE={!idExam}','_blank', config='toolbar=no, menubar=no, resizable=yes, directories=no, titlebar=no, lovation=no');" >
+                            <apex:param name="showExameTemplateName" value="25" assignTo="{!examSize}" />
+                        </apex:commandButton>
+                        <apex:commandButton id="btnReviewExam" value="Review Exam" disabled="{!IF(idExam == null, true, false)}" onclick="window.open('/apex/LRN_Exam?iE={!idExam}','_blank', config='toolbar=no, menubar=no, resizable=yes, directories=no, titlebar=no, lovation=no');" />
+                        <apex:commandButton id="btnBackList" value="Back List" onclick="callBackListJob();return false;" />
+                    </apex:pageBlockButtons>
+                </apex:pageBlock>
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

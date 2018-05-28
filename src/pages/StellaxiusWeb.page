@@ -1,0 +1,1058 @@
+<apex:page applyBodyTag="false" applyHtmlTag="false" showHeader="false" showQuickActionVfHeader="false" sidebar="false" standardStylesheets="false" controller="StellaxiusSiteController">
+    <html lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta name="description" content="" />
+            <meta name="author" content="Stellaxius" />
+            <meta name="google-site-verification" content="Ie5EM3tCdPKT5Snj5zh42zXm2El4MgBNGsD4y66OQU0"/>
+            <meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://www.itjobs.pt/empresa/stellaxius/logo/social" />
+            <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.stellaxius.com" />
+            <meta prefix="og: http://ogp.me/ns#" property="og:title" content="The Rock" />
+			<meta prefix="og: http://ogp.me/ns#" property="og:type" content="article" />
+            <title>STELLAXIUS</title>
+            <!-- Bootstrap Core CSS -->
+            <link href="{!URLFOR($Resource.stellaxius_resources, '/css/stellaxius_bootstrap.css')}" rel="stylesheet" />
+            <!-- Animation Css -->
+            <link href="{!URLFOR($Resource.stellaxius_resources, '/css/stellaxius_animate.css')}" rel="stylesheet" type="text/css" />
+            <!-- Custom Fonts -->
+            <link href="{!URLFOR($Resource.stellaxius_resources, '/font-awesome/stellaxius_font_awesome.css')}" rel="stylesheet" type="text/css" />
+            <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css' />
+            <!-- Custom CSS -->
+            <link href="{!URLFOR($Resource.stellaxius_resources, '/css/stellaxius.css')}" rel="stylesheet" />
+            <link href="{!$Resource.stellaxius_css_red}" rel="stylesheet" id="theme-color" />
+            <link href="{!$Resource.stellaxius_css_layout}" rel="stylesheet" id="theme-layout" />
+            <link href="{!$Resource.stellaxius_card_css}" rel="stylesheet" id="stellaxius-card" />
+            
+            <site:googleAnalyticsTracking />
+            
+        </head>
+        
+        <body id="page-top" class="index">
+            <div class="box-layout">
+                <a href="javascript:" id="return-to-top"><i class="fa fa-angle-up"></i></a> <!--Bottom right - Tob Button-->
+                <!--PreLoader-->
+                <div id="preloader">
+                    <div class="preloader-container">
+                        <div class="pre-circle">
+                            <p style="color: #8c8c8c;">Loading...</p>
+                            <!-- Loader -->
+                            <span class="rotate double"></span>
+                            <div class="pre-logo">
+                                <img alt="" src="{!$Resource.stellaxius_logo}" />
+                            </div>
+                        </div>
+                    </div>
+                </div> <!--/PreLoader-->
+                <!-- Header -->
+                
+                <header>
+                    <!-- Navigation -->
+                    <nav id="nav-menu" class="navbar navbar-default navbar-fixed-top">
+                        <div class="container">
+                            <div class="navbar-header page-scroll">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                                <a class="navbar-brand" href="{!siteBase}?#page-top"><img class="img-responsive" src="{!$Resource.stellaxius_logo}" alt="Logo" /></a>
+                            </div>
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav navbar-right" onclick="document.getElementById('bs-example-navbar-collapse-1').classList.remove('in');" >
+                                    <li class="hidden"> <a href="{!siteBase}?#page-top"></a> </li>
+                                    <li class="page-scroll"> <a href="{!siteBase}?#about-us">About Us</a> </li>
+                                    <li class="page-scroll"> <a href="{!siteBase}?#services">Services</a> </li>
+                                    <!--
+<li class="page-scroll"> <a href="{!siteBase}?#culture">Culture</a> </li>
+<li class="page-scroll"> <a href="{!siteBase}?#team">Team</a> </li>
+-->
+                                    <li class="page-scroll"> <a href="{!siteBase}?#join-us">Join Us</a> </li>
+                                    <!--
+<li class="page-scroll"> <a href="{!siteBase}?#testimonials">Testimonials</a> </li>
+-->
+                                    <li class="page-scroll"> <a href="{!siteBase}?#contact">Contact</a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- /Navigation -->
+                </header>
+                <!-- /Header -->
+                
+                <!-- SLIDER SLIDER SLIDER SLIDER SLIDER SLIDER -->
+                
+                <!-- Slider -->
+                <!-- Image Slider -->
+                <section id="about-us" style="padding-bottom: 0px;">
+                    <!-- Image Slider -->
+                    <div class="image-slider">
+                        <!-- Data Ride -->
+                        <div id="carousel-slider" class="carousel slide main" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <!-- Slider Item 1 - Default Active-->
+                                <div class="item active">
+                                    <img alt="Slider1" style="background-size: 100% 100%; opacity: 0.9; filter: alpha(opacity=90); z-index: -1;" src="{!$Resource.stellaxius_slider_1}" />
+                                    
+                                    <div class="container carousel-caption" style="top: 0px;">
+                                        <div style="top: 0px;" />
+                                        
+                                        <h2 class="our-mission-header" style="z-index: 1; color: white;">Our Mission</h2>
+                                        
+                                        <div class="mission-separator2" />
+                                        
+                                        <p class="our-mission">
+                                            <apex:repeat value="{!ourMission}" var="value">
+                                                <span class="mission" style="z-index: 1;">{!value.Value__c}&nbsp;</span>
+                                            </apex:repeat>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- /Slider Item 1-->
+                                
+                                <!-- Slider Item 2 -->
+                                <div class="item">
+                                    <img alt="Slider2" style="background-size: 100% 100%; opacity: 1.0; filter: alpha(opacity=100); z-index: -1;" src="{!$Resource.stellaxius_slider_2}" />
+                                    
+                                    <div class="container carousel-caption" style="top: 10px; padding: 0px;">
+                                        <div style="top: 0px;" />
+                                        
+                                        <h2 class="our-mission-header" style="z-index: 1; color: white;">Our Values</h2>
+                                        
+                                        <div style="height: 10px;" />
+                                        
+                                        <p class="our-mission">
+                                            <span class="value-header">
+                                                We cultivate and practice a set of core values that we reflect naturally in our everyday actions. From a complex customer delivery to our Friday afternoon chill out moments, we ensure we are aligned to our values and leverage the impact they have in defining us as a company.
+                                            </span>
+                                        </p>
+                                        
+                                        <div class="values-container grid" style="width: 70%; text-align: left; padding-left: 10%;">
+                                            <div>
+                                                
+                                                <apex:repeat value="{!ourValues}" var="value">
+                                                    <div>
+                                                        <div>
+                                                            <span class="mission standout mission-standout_font" style="z-index: 1; padding-left: 0;">{!value.Value__c}&nbsp;</span>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <apex:outputText rendered="{!value.Value__c == 'Trust'}" escape="false" value="</div><div>" />
+                                                    
+                                                </apex:repeat>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <!-- /Slider Item 2 -->
+                                
+                                <!-- Slider Item 3 -->
+                                <div class="item">
+                                    <img alt="Slider3" style="background-size: 100% 100%; opacity: 1.0; filter: alpha(opacity=100);" src="{!$Resource.stellaxius_slider_3}" />
+                                    
+                                    <div class="certificationsHideMobile" style="position: absolute; bottom: 0px; z-index: 10; width: 100%; overflow-x: hidden;">
+                                        <table width="100%" class="why-us-table" style="z-index: 1;">
+                                            <tr>
+                                                <td class="why-us-table" width="60%">
+                                                    <table width="100%">
+                                                        <tr>
+                                                            <td>
+                                                                <p class="why-us" style="font-size: 18px;   color: #ffffff; text-align: left; margin-left: 0px; margin-right: auto;">
+                                                                    Partnerships
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <img alt="Salesforce Partners" src="{!$Resource.salesforce_partners}" />
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="why-us-table" width="40%">
+                                                    <table width="100%">
+                                                        <tr>
+                                                            <td>
+                                                                <p class="why-us" style="font-size: 18px;  color: #ffffff">
+                                                                    Certified Professionals
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <!-- <img alt="Salesforce Certified Administrator" height="58" src="{!$Resource.salesforce_cert_administrator}" /> -->
+                                                                <!-- <img alt="Salesforce Certified Advance Administrator" height="58" src="{!$Resource.salesforce_cert_adv_administrator}" /> -->
+                                                                <img alt="Salesforce Certified Sales Cloud Consultant" height="58" src="{!$Resource.salesforce_cert_sales_cloud_consultant}" />
+                                                                <img alt="Salesforce Certified Service Cloud Consultant" height="58" src="{!$Resource.salesforce_cert_service_cloud_consultant}" />
+                                                                <img alt="Salesforce Certified Community Cloud Consultant" height="58" src="{!$Resource.salesforce_cert_community_cloud_consultant}" />
+                                                                 <img alt="Salesforce Accredited Sales Professional" height="58" src="{!$Resource.salesforce_accredited_sales_professional}" />
+                                                                <!-- <img alt="Salesforce Certified Force.com Developer" height="58" src="{!$Resource.salesforce_cert_forcecom_developer}" /> -->
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="height: 5px;">
+                                                            <td>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <img alt="Certified Scrum Master" height="48" src="{!$Resource.csm}" />
+                                                                <img alt="PMI Agile Certified Practitioner" height="40" src="{!$Resource.pmi_acp}" />
+                                                                <img alt="PMI Project Management Professional" height="40" src="{!$Resource.pmi_pmp}" />
+                                                                <!-- <img alt="Certified Business Process Professional" height="48" src="{!$Resource.cbpp}" /> -->
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    
+                                    <div class="container carousel-caption" style="top: 10px; padding: 0px; width: 100%;">
+                                        <div style="top: 0px;">
+                                            <h2 class="why-us-header" style="z-index: 1; color: #ffffff;">Why Us?</h2>
+                                        </div>
+                                        
+                                        <p class="why-us" style="z-index: 1;">
+                                            Our focus is to ensure our customers are getting more value than they expected when they engage with us and do so repeatedly over time. We help our customers do what they are best at, simplifying their digital transformation journey, with a partnership approach that makes us all part of one team.
+                                        </p>
+                                        
+                                        
+                                        <!-- <div style="height: 360px;" /> -->
+                                    </div>
+                                </div>
+                                <!-- /Slider Item 3 -->
+                            </div>
+                            <!-- /Carousel Inner -->
+                            
+                            <!-- Slider Control Indicators -->
+                            <ol style="position: absolute; bottom: 10px; z-index: 500;" class="carousel-indicators">
+                                <!-- active -->
+                                <li class="active" data-slide-to="0" data-target="#carousel-slider" style="color: white;"></li>
+                                <!-- inactive -->
+                                <li class="" data-slide-to="1" data-target="#carousel-slider" style="color: white;"></li>
+                                <!-- inactive -->
+                                <li class="" data-slide-to="2" data-target="#carousel-slider" style="color: white;"></li>
+                            </ol>
+                            <!-- /Slider Control Indicators -->
+                            
+                            <!-- Slider Controls Next and Prev-->
+                            <a data-slide="prev" role="button" href="#carousel-slider" class="left carousel-control" style="top: 250px">
+                                <i class="fa fa-angle-left arrow-color"></i>
+                            </a>
+                            
+                            <a data-slide="next" role="button" href="#carousel-slider" class="right carousel-control" style="top: 250px;">
+                                <i class="fa fa-angle-right arrow-color"></i>
+                            </a>
+                            <!-- /Slider Controls Next and Prev-->
+                            
+                        </div>
+                        <!-- /Data Ride --> 
+                    </div>
+                    <!-- /Image Slider -->       
+                </section>
+                <!-- / Image Slider -->
+                <!-- /Slider -->
+                
+                <!-- ////////SLIDER SLIDER SLIDER SLIDER SLIDER SLIDER -->
+                
+                <table width="100%" class="why-us-table certificationsHideDesktop" style="z-index: 1;">
+                    <tr>
+                        <td class="why-us-table" width="60%">
+                            <table width="100%">
+                                <tr>
+                                    <td>
+                                        <p class="why-us" style="font-size: 18px;   color: #ffffff; text-align: left; margin-left: 0px; margin-right: auto;">
+                                            Partnerships
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img alt="Salesforce Partners" src="{!$Resource.salesforce_partners}" />
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <table width="100%">
+                                <tr>
+                                    <td>
+                                        <p class="why-us" style="font-size: 18px;  color: #ffffff;  text-align: left; margin-left: 0px; margin-right: auto;">
+                                            Certified Professionals
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <!-- <img alt="Salesforce Certified Administrator" height="58" src="{!$Resource.salesforce_cert_administrator}" /> -->
+                                        <!-- <img alt="Salesforce Certified Advance Administrator" height="58" src="{!$Resource.salesforce_cert_adv_administrator}" /> -->
+                                        <img class="certifications--margin" alt="Salesforce Certified Sales Cloud Consultant" height="58" src="{!$Resource.salesforce_cert_sales_cloud_consultant}" />
+                                        <img class="certifications--margin" alt="Salesforce Certified Service Cloud Consultant" height="58" src="{!$Resource.salesforce_cert_service_cloud_consultant}" />
+                                        <img class="certifications--margin" alt="Salesforce Certified Community Cloud Consultant" height="58" src="{!$Resource.salesforce_cert_community_cloud_consultant}" />
+                                        <img class="certifications--margin" alt="Salesforce Accredited Sales Professional" height="58" src="{!$Resource.salesforce_accredited_sales_professional}" />
+                                        <!-- <img alt="Salesforce Certified Force.com Developer" height="58" src="{!$Resource.salesforce_cert_forcecom_developer}" /> -->
+                                    </td>
+                                    </tr>
+                                <tr style="height: 5px;">
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img alt="Certified Scrum Master" height="48" src="{!$Resource.csm}" />
+                                        <img alt="PMI Agile Certified Practitioner" height="40" src="{!$Resource.pmi_acp}" />
+                                        <img alt="PMI Project Management Professional" height="40" src="{!$Resource.pmi_pmp}" />
+                                       <!-- <img alt="Certified Business Process Professional" height="48" src="{!$Resource.cbpp}" /> -->
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </td>
+                        
+                    </tr>
+                </table>
+                
+                
+                
+                <!-- Services -->
+                <section id="services">
+                    <div class="container menu-padding">
+                        <h2 class="heading text-center wow fadeInDown animated animated" style="visibility: visible; animation-name: fadeInDown;" data-wow-delay="100ms" data-wow-duration="1500ms"><span class="green">Services</span> that transform our Customers</h2>
+                        
+                        <p class="text-center platform">
+                            Simple-to-use consulting services and a collaboration culture that empowers you to maximize value
+                        </p>
+                        
+                        <div class="service-container">
+                            <apex:repeat value="{!services}" var="service">
+                                <div class="col-lg-4 col-md-6 col-sm-6 wow zoomIn animated animated service-col-1" style="visibility: visible;" data-wow-delay="150ms" data-wow-duration="1000ms">
+                                    <div class="service-icon"><i class="fa pull-left {!service.Icon_Class__c}"></i></div>
+                                    <div class="service-heading">{!service.Value__c}</div>
+                                    <div class="service-description" style="text-align: justify; text-justify: inter-word;">{!service.Description__c}</div>
+                                </div>
+                            </apex:repeat>
+                        </div>
+                        
+                        <div class="clearfix"></div>
+                    </div>
+                </section>
+                
+                <!-- /Services -->
+                
+                <!-- saparator -->
+                <div class="saparator-line">
+                    <div class="container text-center">
+                        <div class="saparator"></div>
+                    </div>
+                </div>
+                <!-- /saparator -->
+                
+                <!-- TEAM -->
+                <!--
+<section id="team">
+<div class="container menu-padding">
+<c:StellaxiusTeam />
+</div>
+</section>
+-->
+                
+                <!-- <div class="saparator-line" /> -->
+                
+                <!-- saparator -->
+                <!--
+<div class="saparator-line">
+<div class="container text-center">
+<div class="saparator"></div>
+</div>
+</div>
+-->
+                <!-- /saparator -->
+                
+                <!-- JOIN US START -->
+                <section id="join-us">
+                    <div class="container menu-padding">
+                        <h2 class="heading text-center wow fadeInDown animated animated" style="visibility: visible; animation-name: fadeInDown;" data-wow-delay="100ms" data-wow-duration="1500ms"><span class="green">Join</span> Us</h2>
+                        <div class="saparator"></div>
+                        <div style="height: 20px;" />
+                        
+                        
+                        <apex:repeat value="{!jobs}" var="job">
+                            <div class="col-lg-4 col-md-6 col-sm-6 wow zoomIn animated animated service-col-1" style="visibility: visible;" data-wow-delay="150ms" data-wow-duration="1000ms">
+                                <a href="{!siteBase}/StellaxiusWebCandidateApplication?ref={!job.Name}">
+                                    <div class="service-icon"><i onMouseOver="this.style.color='#d9403d'" onMouseOut="this.style.color='#707b82'" style="font-size: 70px; float: left; margin-right: 20px; width: 77px; height:130px; color: #707b82 !important;" class="fa {!job.Icon_Class__c}"></i></div>
+                                    <div onMouseOver="this.style.color='#d9403d'" onMouseOut="this.style.color='#000000'" class="service-heading">{!IF(ISBLANK(job.Job_Title__c),job.Custom_Job_Title__c,job.Job_Title__c)}</div>
+                                    <div style="color: #707b82 !important;" onMouseOver="this.style.color='#d9403d'" onMouseOut="this.style.color='#707b82'"><p>{!job.Job_Position__c}<span style="font-weight: bold;"> Apply here!</span></p></div>
+                                </a>
+                            </div>
+                        </apex:repeat>
+                        
+                        <!--
+<div class="col-lg-4 col-md-6 col-sm-6 wow zoomIn animated animated" style="visibility: visible;" data-wow-delay="150ms" data-wow-duration="1000ms">
+<div class="sevice-icon"><i class="fa fa-globe"></i></div>
+<div class="service-heading">Time Managment</div>
+<p>Start from Now, You Can Easily manage Your Time And It Has</p>
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-6 wow zoomIn animated animated" style="visibility: visible;" data-wow-delay="150ms" data-wow-duration="1000ms">
+<div class="sevice-icon "><i class="fa fa-life-ring"></i></div>
+<div class="service-heading">Community Help &amp; Supports</div>
+<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin nibh</p>
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-6 wow zoomIn animated animated" style="visibility: visible;" data-wow-delay="150ms" data-wow-duration="1000ms">
+<div class="sevice-icon "><i class="fa fa-comments"></i></div>
+<div class="service-heading">Chat &amp; Message</div>
+<p>lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis </p>
+</div>
+
+<div class="clearfix hidden-md hidden-sm"></div>
+
+<div class="col-lg-4 col-md-6 col-sm-6 wow zoomIn animated animated" style="visibility: visible;" data-wow-delay="150ms" data-wow-duration="1000ms">
+<div class="sevice-icon "><i class="fa fa-line-chart"></i></div>
+<div class="service-heading">Stats Overview</div>
+<p>Aenean sollicitudin, lorem quis bib endum auctor, nisi elit consequat </p>
+</div>
+<div class="col-lg-4 col-md-6 col-sm-6 wow zoomIn animated animated" style="visibility: visible;" data-wow-delay="150ms" data-wow-duration="1000ms">
+<div class="sevice-icon "><i class="fa fa-file-o"></i></div>
+<div class="service-heading">Documentation</div>
+<p>consequat ipsum, nec sagittis sem nibh Aenean sollicitudin, lorem quis </p>
+</div>
+<div class="col-lg-4 col-md-6 col-sm-6 wow zoomIn animated animated" style="visibility: visible;" data-wow-delay="150ms" data-wow-duration="1000ms">
+<div class="sevice-icon "><i class="fa fa-users"></i></div>
+<div class="service-heading">Applications</div>
+<p>If you want to join the team then please send us your application </p>
+<a class="btn btn-success btn-lg" href="{!siteBase}/StellaxiusWebCandidateApplication?id=dummy">Apply</a>
+</div>
+-->
+                        <div class="clearfix"></div>
+                    </div>
+                </section>
+                
+                <!-- JOIN US END -->
+                
+                <!-- saparator -->
+                <div class="saparator-line">
+                    <div class="container text-center">
+                        <div class="saparator"></div>
+                    </div>
+                </div>
+                <!-- /saparator -->
+                
+                <!-- TESTIMONIALS -->
+                <!--
+<section id="testimonials">
+<div class="container menu-padding">
+<c:StellaxiusTestimonials />
+</div>
+</section>
+-->
+                <!-- TESTEMONIALS END -->
+                
+                <!-- saparator -->
+                <!--
+<div class="saparator-line">
+<div class="container text-center">
+<div class="saparator"></div>
+</div>
+</div>
+-->
+                <!-- /saparator -->
+                
+                <!-- Contact -->
+                <section id="contact">
+                    <div class="container menu-padding">
+                        <h2 class="heading text-center wow fadeInDown animated animated" style="visibility: visible; animation-name: fadeInDown;" data-wow-delay="100ms" data-wow-duration="1500ms"><span class="green">Contact</span> Us</h2>
+                        <p class="text-center platform">{!contactHeader}</p>
+                        <div style="height: 40px;"></div>
+                        
+                        <div class="col-lg-6 col-md-6 col-sm-6 row wow fadeInLeft animated animated"  data-wow-delay="100ms" data-wow-duration="1500ms">
+                            
+                            <!--Contact Form-->
+                            <div style="height: 500px;">
+                                <form name="sentMessage" id="contactForm" method="post" action="https://{!IF(isProduction,'www.salesforce.com','test.salesforce.com')}/servlet/servlet.WebToLead?encoding=UTF-8">
+                                    
+                                    <input type="hidden" name="oid" value="{!$Organization.Id}" />
+                                    <input type="hidden" name="retURL" value="{!IF(isProduction,'http://www.stellaxius.com','http://dev-www.stellaxius.com')}" />
+                                    
+                                    <!--  ----------------------------------------------------------------------  -->
+                                    <!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+                                    <!--  these lines if you wish to test in debug mode.                          -->
+                                    <!--  <input type="hidden" name="debug" value=1>                              -->
+                                    <!--  <input type="hidden" name="debugEmail"                                  -->
+                                    <!--  value="antonio.santos@stellaxius.com">                                  -->
+                                    <!--  ----------------------------------------------------------------------  -->
+                                    
+                                    <!--
+<input type="hidden" name="debug" value="1" />
+<input type="hidden" name="debugEmail" value="antonio.santos@stellaxius.com" />
+-->
+                                    
+                                    <!-- lead source for Website -->
+                                    <input type="hidden" id="lead_source" name="lead_source" value="Website" />
+                                    
+                                    <!-- lead type - external contact -->
+                                    <input type="hidden" id="{!IF(isProduction,'00N5800000CJHWd','00N3E000000XToG')}" name="{!IF(isProduction,'00N5800000CJHWd','00N3E000000XToG')}" value="External Contact" />
+                                    
+                                    <div class="control-group col-lg-6">
+                                        <input type="text" class="form-control" placeholder="First Name" name="first_name" required="required"/>
+                                        
+                                        <input type="text" class="form-control" placeholder="Last Name" name="last_name" required="required" />
+                                    </div>
+                                    <div class="control-group col-lg-6">
+                                        <input type="text" class="form-control" placeholder="Company Name" name="company" required="required" />
+                                        <input type="email" class="form-control" placeholder="Email" name="email" required="required"/>
+                                        <input type="phone" class="form-control" placeholder="Phone" name="phone" />
+                                    </div>
+                                    <div class="control-group">
+                                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                                            <textarea rows="6" class="form-control" placeholder="Message" name="description" required="required"></textarea>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="form-group col-xs-12">
+                                        <button type="submit" class="btn btn-success btn-lg">Send</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 wow fadeInRight animated animated"  data-wow-delay="100ms" data-wow-duration="1500ms">
+                            <!--Google Map-->
+                            <iframe style="height: 360px;" src="{!contactMap}"></iframe>
+                        </div>
+                    </div>
+                </section>
+                <!-- /Contact -->
+                <!-- Footer -->
+                <footer class="footer" id="footer-1">
+                    <div class="footer1">
+                        <div class="container menu-padding">
+                            <!--Footer Column 1-->
+                            <div class="col-lg-3 col-sm-3 col-md-3">
+                                <div class="address"> <i class="fa fa-envelope-o"></i><a class="address" href="mailto:{!contactEmail}">{!contactEmail}</a> </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-3 col-md-3">
+                                <div class="address"> <i class="fa fa-mobile"></i><a class="address" href="tel:{!contactPhone}">{!contactPhone}</a> </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-3 col-md-3">
+                                <div class="address"> <i class="fa fa-map-marker"></i>
+                                    <div class="address-content">
+                                        {!contactAddress}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-bg">
+                        <div class="container">
+                            <p class="pull-left">&copy; All rights reserved STELLAXIUS 2018</p> <!--Copyright Text-->
+                        </div>
+                    </div>
+                </footer>
+                <!-- /Footer -->
+                <!-- Project Modal 1 -->
+                <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-content">
+                        <!--Close Button-->
+                        <div class="close-modal" data-dismiss="modal">
+                            <div class="lr">
+                                <div class="rl"> </div>
+                            </div>
+                        </div>
+                        <!--/Close Button-->
+                        <div class="container">
+                            <div class="row">
+                                <!--Modal Body-->
+                                <div class="modal-body">
+                                    <h2 class="heading"><span class="green">Project</span> Title</h2> <!-- Modal Heading Title-->
+                                    <div class="col-lg-5 col-md-5"><img src="http://placehold.it/300&amp;text=Portfolio 1" class="img-responsive img-centered" alt="PORTFOLIO1" /></div> <!-- Modal Image-->
+                                    <div class="col-lg-7 col-md-7 text-left">
+                                        <!--Modal Content-->
+                                        <ul class="list-unstyled">
+                                            <li><i class="fa fa-angle-right"></i>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, Proin gravida nibh vel velit auctor aliquet</li>
+                                            <li><i class="fa fa-angle-right"></i>nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio Proin gravida nibh vel velit auctor aliquet. </li>
+                                            <li><i class="fa fa-angle-right"></i>lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin.</li>
+                                            <li><i class="fa fa-angle-right"></i>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, Proin gravida nibh vel velit auctor aliquet</li>
+                                            <li><i class="fa fa-angle-right"></i>nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio Proin gravida nibh vel velit auctor aliquet. </li>
+                                        </ul>
+                                        <!--
+<a class="btn btn-lg btn-icon" href="#">Get Started</a> <a class="btn btn-lg btn-icon" href="#">Learn More</a>
+-->
+                                        <!--/Modal Content-->
+                                    </div>
+                                </div>
+                                <!--/Modal Body-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Project Modal 1 -->
+                <!-- Project Modal 2 -->
+                <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-content">
+                        <!--Close Button-->
+                        <div class="close-modal" data-dismiss="modal">
+                            <div class="lr">
+                                <div class="rl"> </div>
+                            </div>
+                        </div> <!--/Close Button-->
+                        <div class="container">
+                            <div class="row">
+                                <!--Modal Body-->
+                                <div class="modal-body">
+                                    <h2 class="heading"><span class="green">Project</span> Title</h2> <!-- Modal Heading Title-->
+                                    <div class="col-lg-5 col-md-5"><img src="http://placehold.it/300&amp;text=Portfolio 1" class="img-responsive img-centered" alt="Portfolio2" /></div> <!-- Modal Image-->
+                                    <!--Modal Content-->
+                                    <div class="col-lg-7 col-md-7 text-left">
+                                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio <br />
+                                            Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor.<br />
+                                            nisi lore m quis bibendum auctor elit consequat ipsum.Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. </p>
+                                    </div>
+                                    <!--/Modal Content-->
+                                </div>
+                                <!--/Modal Body-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Project Modal 2 -->
+                <!-- Project Modal 3 -->
+                <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-content">
+                        <!--Close Button-->
+                        <div class="close-modal" data-dismiss="modal">
+                            <div class="lr">
+                                <div class="rl"> </div>
+                            </div>
+                        </div>
+                        <!--/Close Button-->
+                        <div class="container">
+                            <div class="row">
+                                <!--Modal Body-->
+                                <div class="modal-body">
+                                    <h2 class="heading"><span class="green">Project</span> Title</h2> <!-- Modal Heading Title-->
+                                    <div class="col-lg-5 col-md-5"><img src="http://placehold.it/300&amp;text=Portfolio 3" class="img-responsive img-centered" alt="Portfolio3" /></div> <!-- Modal Image-->
+                                    <!--Modal Content-->
+                                    <div class="col-lg-7 col-md-7 text-left">
+                                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit.</p>
+                                        <ul class="list-unstyled">
+                                            <li><i class="fa fa-angle-right"></i>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, Proin gravida nibh vel velit auctor aliquet</li>
+                                            <li><i class="fa fa-angle-right"></i>nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio Proin gravida nibh vel velit auctor aliquet. </li>
+                                            <li><i class="fa fa-angle-right"></i>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, Proin gravida nibh vel velit auctor aliquet</li>
+                                        </ul>
+                                        <a class="btn btn-lg btn-icon" href="#">Get Started</a> <a class="btn btn-lg btn-icon" href="#">Learn More</a>
+                                    </div>
+                                    <!--/Modal Content-->
+                                </div>
+                                <!--/Modal Body-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Project Modal 3 -->
+                <!-- Project Modal 4 -->
+                <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-content">
+                        <!--Close Button-->
+                        <div class="close-modal" data-dismiss="modal">
+                            <div class="lr">
+                                <div class="rl"> </div>
+                            </div>
+                        </div>
+                        <!--/Close Button-->
+                        <div class="container">
+                            <div class="row">
+                                <!--Modal Body-->
+                                <div class="modal-body">
+                                    <h2 class="heading"><span class="green">Project</span> Title</h2> <!-- Modal Heading Title-->
+                                    <div class="col-lg-5 col-md-5"><img src="http://placehold.it/300&amp;text=Portfolio 4" class="img-responsive img-centered" alt="Portfolio4" /></div> <!-- Modal Image-->
+                                    <!--Modal Content-->
+                                    <div class="col-lg-7 col-md-7 text-left">
+                                        <ul class="list-unstyled">
+                                            <li><i class="fa fa-angle-right"></i>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, Proin gravida nibh vel velit auctor aliquet</li>
+                                            <li><i class="fa fa-angle-right"></i>nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio Proin gravida nibh vel velit auctor aliquet. </li>
+                                            <li><i class="fa fa-angle-right"></i>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, Proin gravida nibh vel velit auctor aliquet</li>
+                                            <li><i class="fa fa-angle-right"></i>nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio Proin gravida nibh vel velit auctor aliquet. </li>
+                                            <li><i class="fa fa-angle-right"></i>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, Proin gravida nibh vel velit auctor aliquet</li>
+                                        </ul>
+                                    </div>
+                                    <!--/Modal Content-->
+                                </div>
+                                <!--/Modal Body-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Project Modal 4 -->
+                <!-- Project Modal 5 -->
+                <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-content">
+                        <!--Close Button-->
+                        <div class="close-modal" data-dismiss="modal">
+                            <div class="lr">
+                                <div class="rl"> </div>
+                            </div>
+                        </div>
+                        <!--/Close Button-->
+                        <div class="container">
+                            <div class="row">
+                                <!--Modal Body-->
+                                <div class="modal-body">
+                                    <h2 class="heading"><span class="green">Project</span> Title</h2> <!-- Modal Heading Title-->
+                                    <div class="col-lg-5 col-md-5"><img src="http://placehold.it/300&amp;text=Portfolio 5" class="img-responsive img-centered" alt="Portfolio5" /></div> <!-- Modal Image-->
+                                    <!--Modal Content-->
+                                    <div class="col-lg-7 col-md-7 text-left">
+                                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio <br />
+                                            Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor.<br />
+                                            nisi lore m quis bibendum auctor elit consequat ipsum.Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. </p>
+                                    </div>
+                                    <!--/Modal Content-->
+                                </div>
+                                <!--/Modal Body-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Project Modal 5 -->
+                <!-- Project Modal 6 -->
+                <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-content">
+                        <!--Close Button-->
+                        <div class="close-modal" data-dismiss="modal">
+                            <div class="lr">
+                                <div class="rl"> </div>
+                            </div>
+                        </div> <!--/Close Button-->
+                        <div class="container">
+                            <div class="row">
+                                <!--Modal Body-->
+                                <div class="modal-body">
+                                    <h2 class="heading"><span class="green">Project</span> Title</h2> <!-- Modal Heading Title-->
+                                    <div class="col-lg-5 col-md-5"><img src="http://placehold.it/300&amp;text=Portfolio 6" class="img-responsive img-centered" alt="Portfolio6" /></div> <!-- Modal Image-->
+                                    <!--Modal Content-->
+                                    <div class="col-lg-7 col-md-7 text-left">
+                                        <ul class="list-unstyled">
+                                            <li><i class="fa fa-angle-right"></i>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, Proin gravida nibh vel velit auctor aliquet</li>
+                                            <li><i class="fa fa-angle-right"></i>nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio Proin gravida nibh vel velit auctor aliquet. </li>
+                                            <li><i class="fa fa-angle-right"></i>lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin.nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum</li>
+                                            <li><i class="fa fa-angle-right"></i>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, Proin gravida nibh vel velit auctor aliquet</li>
+                                            <li><i class="fa fa-angle-right"></i>nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio Proin gravida nibh vel velit auctor aliquet. </li>
+                                        </ul>
+                                        <a class="btn btn-lg btn-icon" href="#">Get Started</a> <a class="btn btn-lg btn-icon" href="#">Learn More</a>
+                                    </div>
+                                    <!--/Modal Content-->
+                                </div>
+                                <!--/Modal Body-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Project Modal 6 -->
+                <!-- Project Modal 7 -->
+                <div class="portfolio-modal modal fade" id="portfolioModal7" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-content">
+                        <!--Close Button-->
+                        <div class="close-modal" data-dismiss="modal">
+                            <div class="lr">
+                                <div class="rl"> </div>
+                            </div>
+                        </div> <!--/Close Button-->
+                        <div class="container">
+                            <div class="row">
+                                <!--Modal Body-->
+                                <div class="modal-body">
+                                    <h2 class="heading"><span class="green">Project</span> Title</h2> <!-- Modal Heading Title-->
+                                    <div class="col-lg-5 col-md-5"><img src="http://placehold.it/300&amp;text=Portfolio 7" class="img-responsive img-centered" alt="Portfolio7" /></div> <!-- Modal Image-->
+                                    <!--Modal Content-->
+                                    <div class="col-lg-7 col-md-7 text-left">
+                                        <ul class="list-unstyled">
+                                            <li><i class="fa fa-angle-right"></i>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, Proin gravida nibh vel velit auctor aliquet</li>
+                                            <li><i class="fa fa-angle-right"></i>nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio Proin gravida nibh vel velit auctor aliquet. </li>
+                                            <li><i class="fa fa-angle-right"></i>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, Proin gravida nibh vel velit auctor aliquet</li>
+                                            <li><i class="fa fa-angle-right"></i>nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio Proin gravida nibh vel velit auctor aliquet. </li>
+                                            <li><i class="fa fa-angle-right"></i>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, Proin gravida nibh vel velit auctor aliquet</li>
+                                        </ul>
+                                    </div>
+                                    <!--/Modal Content-->
+                                </div>
+                                <!--/Modal Body-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Project Modal 7 -->
+                <!-- Project Modal 8 -->
+                <div class="portfolio-modal modal fade" id="portfolioModal8" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-content">
+                        <!--Close Button-->
+                        <div class="close-modal" data-dismiss="modal">
+                            <div class="lr">
+                                <div class="rl"> </div>
+                            </div>
+                        </div> <!--/Close Button-->
+                        <div class="container">
+                            <div class="row">
+                                <!--Modal Body-->
+                                <div class="modal-body">
+                                    <h2 class="heading"><span class="green">Project</span> Title</h2> <!-- Modal Heading Title-->
+                                    <div class="col-lg-5 col-md-5"><img src="http://placehold.it/300&amp;text=Portfolio 8" class="img-responsive img-centered" alt="Portfolio8" /></div> <!-- Modal Image-->
+                                    <!--Modal Content-->
+                                    <div class="col-lg-7 col-md-7 text-left">
+                                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio <br />
+                                            Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor.<br />
+                                            nisi lore m quis bibendum auctor elit consequat ipsum.Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. </p>
+                                    </div>
+                                    <!--/Modal Content-->
+                                </div>
+                                <!--/Modal Body-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Project Modal 8 -->
+                <!-- Project Modal 9 -->
+                <div class="portfolio-modal modal fade" id="portfolioModal9" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-content">
+                        <!--Close Button-->
+                        <div class="close-modal" data-dismiss="modal">
+                            <div class="lr">
+                                <div class="rl"> </div>
+                            </div>
+                        </div> <!--/Close Button-->
+                        <div class="container">
+                            <div class="row">
+                                <!--Modal Body-->
+                                <div class="modal-body">
+                                    <h2 class="heading"><span class="green">Project</span> Title</h2> <!-- Modal Heading Title-->
+                                    <div class="col-lg-5 col-md-5"><img src="http://placehold.it/300&amp;text=Portfolio 9" class="img-responsive img-centered" alt="Portfolio9" /></div> <!-- Modal Image-->
+                                    <!--Modal Content-->
+                                    <div class="col-lg-7 col-md-7 text-left">
+                                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio <br />
+                                            Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. Duis sed odio Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi lore m quis bibendum auctor elit consequat ipsum, nec sagittis sem nibh Aenean sollicitudin, lorem quis b ibendum auctor id elit. </p>
+                                    </div>
+                                    <!--/Modal Content-->
+                                </div>
+                                <!--/Modal Body-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- /Project Modal 9 -->
+            <!--jQuery Javascript-->
+            <apex:includeScript value="{!URLFOR($Resource.stellaxius_resources, '/js/jquery-1.11.0.js')}" />
+            <!-- Bootstrap Core JavaScript -->
+            <apex:includeScript value="{!URLFOR($Resource.stellaxius_resources, '/js/bootstrap.min.js')}" />
+            <!-- Plugin JavaScript -->
+            <apex:includeScript value="{!URLFOR($Resource.stellaxius_resources, '/js/jquery.easing.min.js')}" />
+            <apex:includeScript value="{!URLFOR($Resource.stellaxius_resources, '/js/wow.min.js')}" />
+            <apex:includeScript value="{!URLFOR($Resource.stellaxius_resources, '/js/color-style.js')}" />
+            <apex:includeScript value="{!$Resource.stellaxius_util_js}" />
+            
+            <script type="text/javascript">
+            j$ = jQuery.noConflict();
+            
+            
+            <!-- Tab -->
+                j$('#myTabs a').click(function (e) {
+                    e.preventDefault()
+                    j$(this).tab('show')
+                });
+            
+            <!-- Animated JS -->
+                new WOW().init();
+            
+            <!-- Collapse -->
+                j$(document).ready(
+                    function() {
+                        j$(".panel-heading").click(
+                            function() {
+                                j$('.panel-group').find('.panel-heading').removeClass('active');
+                                j$(this).addClass('active');
+                            }
+                        );
+                        
+                        /** Stellaxius Utils **/
+                        var stellaxiusUtil = new StellaxiusUtil();
+                        
+                        /** Mission **/
+                        var missionRecordsJSON = '{!ourMissionJSON}';
+                        var missionRecords = JSON.parse(missionRecordsJSON);
+                        var ourValueRecords = JSON.parse('{!ourValuesJSON}');
+                        
+                        var missionDefinitionMap = { };
+                        
+                        for (var i = 0; i < missionRecords.length; i++) {
+                            var missionRecord = missionRecords[i];
+                            var sentence = '';
+                            var definitionText = '';
+                            
+                            if (missionRecord.Value__c != null) {
+                                sentence = missionRecord.Value__c;
+                            }
+                            
+                            if (missionRecord.Description__c != null) {
+                                definitionText = missionRecord.Description__c;
+                            }
+                            
+                            stellaxiusUtil.putDefinition(missionDefinitionMap, sentence, definitionText);
+                        }
+                        
+                        for (var i = 0; i < ourValueRecords.length; i++) {
+                            var ourValueRecord = ourValueRecords[i];
+                            var sentence = '';
+                            var definitionText = '';
+                            
+                            if (ourValueRecord.Value__c != null) {
+                                sentence = ourValueRecord.Value__c;
+                            }
+                            
+                            if (ourValueRecord.Description__c != null) {
+                                definitionText = ourValueRecord.Description__c;
+                            }
+                            
+                            stellaxiusUtil.putDefinition(missionDefinitionMap, sentence, definitionText);
+                        }
+                        
+                        stellaxiusUtil.buildDefinitionWall(missionDefinitionMap, j$('span.mission'));
+                        
+                        stellaxiusUtil.buildValueWall(j$('span.standout'));
+                        
+                        
+                    }
+                );
+            
+            j$('.panel-heading a').on('click',function(e){
+                if(j$(this).parents('.panel').children('.panel-collapse').hasClass('in')){
+                    e.stopPropagation();
+                }
+            });
+            
+            <!-- Scroll -->
+                j$(window).scroll(function() {
+                    if (j$(this).scrollTop() >= 500) { 
+                        j$('#return-to-top').fadeIn(600); 
+                    } else {
+                        j$('#return-to-top').fadeOut(600); 
+                    }
+                });
+            j$('#return-to-top').click(function() { 
+                j$('body,html').animate({
+                    scrollTop : 0 
+                }, 500);
+            });
+            j$(document).ready(function() {
+                j$('#return-to-top').css("display", "none");
+            });
+            j$(document).ready(function() {
+                j$('#return-to-top').css("display", "none");
+            });
+            j$(document).ready(function() {
+                j$('#return-to-top').css("display", "none");
+            });
+            
+            j$(".carousel").on("touchstart", function(event){
+                var xClick = event.originalEvent.touches[0].pageX;
+                j$(this).one("touchmove", function(event){
+                    var xMove = event.originalEvent.touches[0].pageX;
+                    if( Math.floor(xClick - xMove) > 5 ){
+                        j$(this).carousel('next');
+                    }
+                    else if( Math.floor(xClick - xMove) < -5 ){
+                        j$(this).carousel('prev');
+                    }
+                });
+                j$(".carousel").on("touchend", function(){
+                    j$(this).off("touchmove");
+                });
+            });
+            
+            <!-- Preloader -->
+                j$(window).load(function(){
+                    j$("#preloader").delay(500).fadeOut(1000);
+                }); 
+            
+            <!-- Tooltip -->
+                j$('[data-toggle="tooltip"]').tooltip({'placement': 'top'});
+            <!-- Header --> 
+                j$('.header-relative').on('click',function(e){
+                    j$('.navbar').removeClass('navbar-fixed-top');
+                });
+            j$('.header-fix').on('click',function(e){
+                j$('.navbar').addClass('navbar-fixed-top');
+            }); 
+            
+            
+            j$(document).ready(function(){
+                //$window = $(window);
+                j$('div[data-type="background"]').each(function(){
+                    var $bgobj = j$(this);
+                    j$(window).scroll(function(){
+                        var yPos = -($window.scrollTop()/$bgobj.data('speed'));
+                        var coords = '50% ' + yPos + 'px';
+                        //$bgobj.css({backgroundPosition: coords});
+                    });
+                });
+                
+                // Team Cards
+                var margin = 0;
+                var items = j$("div.card").length;
+                var max_margin = (items * 100) -255;
+                var offset = 0;
+                
+                var topContainerWidth = j$("div.card-top-container").width();
+                var topContainerHeight = j$("div.card-top-container").height();
+                
+                var isDesktop = (topContainerWidth >= topContainerHeight);
+                
+                if (isDesktop) {
+                    offset = 681;
+                    
+                    j$(".team-mobile").hide();
+                    
+                    j$("div.card-vertical-space").hide();
+                    j$("div.testimonial-card-vertical-space").hide();
+                    
+                    j$("#right").click(function(){
+                        if(margin > -max_margin){
+                            margin = margin - offset;
+                            j$("div.card-container").css("margin-left",margin+"px");
+                        }
+                        
+                        /*j$(".debug").html("<p>topContainerWidth: " + topContainerWidth + ", topContainerHeight: " + topContainerHeight + ", Items: " + items + ", Margin: " + margin+", -MaxMargin:" + (-max_margin) + " </p>");*/
+                    });
+                    
+                    j$("#left").click(function(){
+                        if(margin < 0){
+                            margin = margin + offset;
+                            j$("div.card-container").css("margin-left",margin+"px");
+                        }
+                    });
+                } else {
+                    offset = 927;
+                    
+                    j$(".team-desktop").hide();
+                    
+                    j$("#up").click(
+                        function() {
+                            if (margin < 0) {
+                                margin = margin + offset;
+                                
+                                j$("div.card-container").css("margin-top", margin + "px");
+                            }
+                        }
+                    );
+                    
+                    j$("#down").click(
+                        function() {
+                            if (margin > -max_margin) {
+                                margin = margin - offset;
+                                
+                                j$("div.card-container").css("margin-top", margin + "px");
+                            }
+                        }
+                    );
+                }
+                
+            });
+            </script>
+        </body>
+    </html>
+</apex:page>

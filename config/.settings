@@ -1,0 +1,17 @@
+{
+    "projectName": "stellaxius sandbox",
+    "username": "david.correia@stellaxius.com.site",
+    "id": "661ab720-6251-11e8-acd2-6b8bde0494c6",
+    "namespace": "",
+    "orgType": "developer",
+    "loginUrl": "https://login.salesforce.com/",
+    "instanceUrl": "https://cs89.salesforce.com",
+    "workspace": "C:\\Users\\David Correia\\Documents",
+    "subscription": [
+        "ApexClass",
+        "ApexComponent",
+        "ApexPage",
+        "ApexTrigger",
+        "StaticResource"
+    ]
+}

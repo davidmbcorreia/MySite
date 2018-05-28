@@ -1,0 +1,42 @@
+<apex:component controller="StellaxiusTestimonialComponentController">
+
+            <h2 class="heading text-center wow fadeInDown animated animated" style="visibility: visible; animation-name: fadeInDown;" data-wow-delay="100ms" data-wow-duration="1500ms"><span class="green">Testimonials</span> About Us</h2>
+
+            <p class="text-center platform">We value and are proud of the feedback our customers provide of the work we have done together</p>
+
+<div class="testimonial-card-align-left">
+
+    <div class="testimonial-card-buttons" style="width: 680px; text-align: right">
+        <span id="left" class="testimonial-card-buttons-each">
+            &lt;
+        </span>
+        <span id="right" class="testimonial-card-buttons-each">
+            &gt;
+        </span>
+    </div>
+
+    <div class="testimonial-card-top-container">
+        <div class="testimonial-card-container">
+
+<apex:repeat value="{!publishedTestimonials}" var="testimonial">
+
+            <div class="testimonial-card testimonial-card-font testimonial-card-size">
+                <div class="testimonial-card-height">
+                    <div>
+                        <p class="testimonial-card-bio" style="vertical-align: top; text-align: justify; text-justify: inter-word; font-family: Sans-Serif; font-size: 12px; font-weight: 200; line-height: 14px; word-spacing: 40%; letter-spacing: 0.05em;">
+                            {!testimonial.Testimonial_Text__c}
+                        </p>
+                    </div>
+                    <div class="testimonial-card-font-name" style="font-family: Sans-Serif; font-size: 10px; color: black;">{!testimonial.Name}</div>
+                    <div class="testimonial-card-font-name" style="font-family: Sans-Serif; font-size: 10px; color: black; padding-bottom: 20px;">{!testimonial.Role__c}</div>
+                </div>
+                <div class="testimonial-card-align-center testimonial-card-bottom"><img class="testimonial-card-image-circle" src="{!$Resource[testimonial.Photo_Resource__c]}" /></div>
+            </div>
+            <div class="testimonial-card-vertical-space">&nbsp;</div>
+</apex:repeat>
+
+        </div>
+    </div>
+</div>
+    
+</apex:component>

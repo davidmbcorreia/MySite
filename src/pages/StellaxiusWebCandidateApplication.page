@@ -1,0 +1,285 @@
+<apex:page applyBodyTag="false" applyHtmlTag="false" showHeader="false" showQuickActionVfHeader="false" sidebar="false" standardStylesheets="false" controller="StellaxiusWebCandidateApplController">
+    <html lang="en" prefix="og: http://ogp.me/ns#">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta name="description" content="" />
+            <meta name="author" content="Stellaxius" />
+            <meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://www.itjobs.pt/empresa/stellaxius/logo/social" />
+            <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://www.stellaxius.com" />
+            <meta prefix="og: http://ogp.me/ns#" property="og:title" content="The Rock" />
+			<meta prefix="og: http://ogp.me/ns#" property="og:description" content="article" />
+            <title>STELLAXIUS</title>
+            <!-- Bootstrap Core CSS -->
+            <link href="{!URLFOR($Resource.stellaxius_resources, '/css/stellaxius_bootstrap.css')}" rel="stylesheet" />
+            <!-- Animation Css -->
+            <link href="{!URLFOR($Resource.stellaxius_resources, '/css/stellaxius_animate.css')}" rel="stylesheet" type="text/css" />
+            <!-- Custom Fonts -->
+            <link href="{!URLFOR($Resource.stellaxius_resources, '/font-awesome/stellaxius_font_awesome.css')}" rel="stylesheet" type="text/css" />
+            <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css' />
+            <!-- Custom CSS -->
+            <link href="{!URLFOR($Resource.stellaxius_resources, '/css/stellaxius.css')}" rel="stylesheet" />
+            <link href="{!$Resource.stellaxius_css_red}" rel="stylesheet" id="theme-color" />
+            <link href="{!$Resource.stellaxius_css_layout}" rel="stylesheet" id="theme-layout" />
+            
+            <site:googleAnalyticsTracking />
+            
+        </head>
+        <body id="page-top" class="index">
+            <div class="box-layout">
+                <a href="#" id="return-to-top"><i class="fa fa-angle-up"></i></a> <!--Bottom right - Tob Button-->
+                <!--PreLoader-->
+                <div id="preloader">
+                    <div class="preloader-container">
+                        <div class="pre-circle">
+                            <p>Loading...</p>
+                            <!-- Loader -->
+                            <span class="rotate double"></span>
+                            <div class="pre-logo">
+                                <img alt="" src="{!$Resource.stellaxius_logo}" />
+                            </div>
+                        </div>
+                    </div>
+                </div> <!--/PreLoader-->
+                <!-- Header -->
+                
+                <header>
+                    <!-- Navigation -->
+                    <nav id="nav-menu" class="navbar navbar-default navbar-fixed-top">
+                        <div class="container">
+                            <div class="navbar-header page-scroll">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                                <a class="navbar-brand" href="{!siteBase}?#page-top"><img class="img-responsive" src="{!$Resource.stellaxius_logo}" alt="Logo" /></a>
+                            </div>
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="hidden"> <a href="{!siteBase}?#page-top"></a> </li>
+                                    <li class="page-scroll"> <a href="{!siteBase}?#about-us">About Us</a> </li>
+                                    <li class="page-scroll"> <a href="{!siteBase}?#services">Services</a> </li>
+                                    <!--
+<li class="page-scroll"> <a href="{!siteBase}?#culture">Culture</a> </li>
+<li class="page-scroll"> <a href="{!siteBase}?#team">Team</a> </li>
+-->
+                                    <li class="page-scroll"> <a href="{!siteBase}?#join-us">Join Us</a> </li>
+                                    <!--
+<li class="page-scroll"> <a href="{!siteBase}?#testimonials">Testimonials</a> </li>
+-->
+                                    <li class="page-scroll"> <a href="{!siteBase}?#contact">Contact</a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- /Navigation -->
+                </header>
+                <!-- /Header -->
+                
+                <section id="contact">
+                    <div class="container menu-padding">
+                        <!--
+<h2 class="heading text-center wow fadeInDown animated animated" style="visibility: visible; animation-name: fadeInDown;" data-wow-delay="100ms" data-wow-duration="1500ms"><span class="green">Candidate</span> Application</h2>
+<p class="text-center platform">Stellaxius guarantees the confidentially of your information.</p>
+-->
+                        <h1 class="heading text-center wow fadeInDown animated animated" style="font-size: 32px; visibility: visible; animation-name: fadeInDown;" data-wow-delay="100ms" data-wow-duration="1500ms"><span class="green">
+                            {!IF(ISBLANK(job.Job_Title__c),job.Custom_Job_Title__c,job.Job_Title__c)}
+                            </span></h1>
+                        
+                        <div style="height: 50px;" />
+                        
+                        <p id="jobspec">_</p>
+                        
+                        
+                        <script>
+                        var jobDetailJSON = '{!jobJSON}';
+                        var jobDetail = JSON.parse(jobDetailJSON);
+                        
+                        $("p#jobspec").html(jobDetail.Job_Specification__c);
+                        </script>
+                        
+                        <div id="jobApplicationForm" class="col-lg-6 col-md-6 col-sm-6 row wow fadeInLeft animated animated"  data-wow-delay="100ms" data-wow-duration="1500ms">
+                            <!--Contact Form-->
+                            
+                            <apex:form enctype="multipart/form-data">
+                                <apex:pageMessages />
+                                
+                                <div class="control-group col-lg-6">
+                                    <apex:inputText value="{!firstName}" styleClass="{!cssStyling_fn}" html-placeholder="First Name"/>
+                                    <apex:inputText value="{!lastName}" styleClass="{!cssStyling_ln}" html-placeholder="Last Name"/>
+                                    
+                                </div>
+                                
+                                <div class="control-group col-lg-6">
+                                    <!--
+<apex:inputText id="emailid" value="{!email}" required="true" styleClass="form-control" html-placeholder="email" onblur="if(emailExpr.test(this.value) == false) { alert('Please input a valid email'); };" />
+-->
+                                    <apex:inputText id="emailid" value="{!email}" styleClass="{!cssStyling_email}" html-placeholder="Email" />
+                                    <apex:inputText value="{!mobilePhone}" styleClass="{!cssStyling_mphone}" html-placeholder="Mobile Phone" size="20" />
+                                </div>
+                                
+                                <div class="control-group col-lg-12">
+                                    <apex:inputTextArea rows="6" styleClass="form-control" html-placeholder="Message" value="{!comments}"></apex:inputTextArea>
+                                </div>
+                                
+                                <div class="control-group col-lg-6">
+                                    <p style="font-size: 10px;">Upload your CV using the button below!</p>
+                                    <!--<label for="cvuploadid">Upload your CV using the button below</label>-->
+                                    <apex:inputFile id="cvuploadid" value="{!leadAttachment.Body}" filename="{!leadAttachment.Name}" />
+                                </div>
+                                
+                                <div class="form-group col-xs-12">
+                                    <apex:commandButton id="upload" action="{!upload}" value="Send" styleClass="btn btn-success btn-lg" />
+                                </div>
+                            </apex:form>
+                            
+                        </div>
+                    </div>
+                </section>
+                
+                
+                
+                
+                
+                <!-- /Contact -->
+                <!-- Footer -->
+                <footer class="footer" id="footer-1">
+                    <div class="footer1">
+                        <div class="container">
+                            <!--Footer Column 1-->
+                            <div class="col-lg-3 col-sm-3 col-md-3">
+                                <div class="address"> <i class="fa fa-envelope-o"></i><a class="address" href="mailto:{!contactEmail}">{!contactEmail}</a>  </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-3 col-md-3">
+                                <div class="address"> <i class="fa fa-mobile"></i><a class="address" href="tel:{!contactPhone}">{!contactPhone}</a> </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-3 col-md-3">
+                                <div class="address"> <i class="fa fa-map-marker"></i>
+                                    <div class="address-content">
+                                        {!contactAddress}<br />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-bg">
+                        <div class="container">
+                            <p class="pull-left">&copy; All rights reserved STELLAXIUS 2018</p> <!--Copyright Text-->
+                        </div>
+                    </div>
+                    
+                    
+                </footer>
+                <!-- /Footer -->
+            </div>
+            <!-- /Project Modal 9 -->
+            <!--jQuery Javascript-->
+            <apex:includeScript value="{!URLFOR($Resource.stellaxius_resources, '/js/jquery-1.11.0.js')}" />
+            <!-- Bootstrap Core JavaScript -->
+            <apex:includeScript value="{!URLFOR($Resource.stellaxius_resources, '/js/bootstrap.min.js')}" />
+            <!-- Plugin JavaScript -->
+            <apex:includeScript value="{!URLFOR($Resource.stellaxius_resources, '/js/jquery.easing.min.js')}" />
+            <apex:includeScript value="{!URLFOR($Resource.stellaxius_resources, '/js/wow.min.js')}" />
+            <apex:includeScript value="{!URLFOR($Resource.stellaxius_resources, '/js/corpo.js')}" />
+            <apex:includeScript value="{!URLFOR($Resource.stellaxius_resources, '/js/color-style.js')}" />
+            
+            <apex:includeScript value="{!$Resource.stellaxius_util_js}" />
+            
+            <script type="text/javascript">
+            j$ = jQuery.noConflict();
+            
+            
+            <!-- Tab -->
+                j$('#myTabs a').click(function (e) {
+                    e.preventDefault()
+                    j$(this).tab('show')
+                });
+            
+            <!-- Animated JS -->
+                new WOW().init();
+            
+            <!-- Collapse -->
+                j$(document).ready(function() {
+                    j$(".panel-heading").click(function() {
+                        j$('.panel-group').find('.panel-heading').removeClass('active');
+                        j$(this).addClass('active');
+                    });
+                });
+            j$('.panel-heading a').on('click',function(e){
+                if(j$(this).parents('.panel').children('.panel-collapse').hasClass('in')){
+                    e.stopPropagation();
+                }
+            });
+            
+            
+            <!-- Prevent reload on submit -->
+                j$(document).ready(function() {
+                    var reqElements =  j$('.form-control_Req');
+                    if (reqElements[0]){
+                        j$('.form-control_Req')[0].focus();
+                        window.location.href="#jobApplicationForm"
+                    }
+                });
+            
+            
+            
+            <!-- Scroll -->
+                j$(window).scroll(function() {
+                    if (j$(this).scrollTop() >= 500) { 
+                        j$('#return-to-top').fadeIn(600); 
+                    } else {
+                        j$('#return-to-top').fadeOut(600); 
+                    }
+                });
+            j$('#return-to-top').click(function() { 
+                j$('body,html').animate({
+                    scrollTop : 0 
+                }, 500);
+            });
+            j$(document).ready(function() {
+                j$('#return-to-top').css("display", "none");
+            });
+            j$(document).ready(function() {
+                j$('#return-to-top').css("display", "none");
+            });
+            j$(document).ready(function() {
+                j$('#return-to-top').css("display", "none");
+            });
+            
+            <!-- Preloader -->
+                j$(window).load(function(){
+                    j$("#preloader").delay(500).fadeOut(1000);
+                }); 
+            
+            <!-- Tooltip -->
+                j$('[data-toggle="tooltip"]').tooltip({'placement': 'top'});
+            <!-- Header --> 
+                j$('.header-relative').on('click',function(e){
+                    j$('.navbar').removeClass('navbar-fixed-top');
+                });
+            j$('.header-fix').on('click',function(e){
+                j$('.navbar').addClass('navbar-fixed-top');
+            }); 
+            
+            var emailExpr = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            
+            j$(document).ready(
+                function() {
+                    //$window = $(window);
+                    j$('div[data-type="background"]').each(
+                        function(){
+                            var $bgobj = j$(this);
+                            
+                            j$(window).scroll(
+                                function() {
+                                    var yPos = -($window.scrollTop()/$bgobj.data('speed'));
+                                    var coords = '50% ' + yPos + 'px';
+                                    //$bgobj.css({backgroundPosition: coords});
+                                }
+                            );
+                        }
+                    );
+                }
+            );
+            </script>
+        </body>
+    </html>
+</apex:page>
