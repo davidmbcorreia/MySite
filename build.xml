@@ -17,7 +17,7 @@
         </classpath>
     </taskdef>
 
-   <!-- Validate Deploy and Update Change Set -->
+   <!-- Validate Deploy, Update Change Set, Retrieve -->
     <target name="UpdateChangeSet">
       <sf:deploy username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="src" checkOnly="true" autoUpdatePackage="true"/>
       <mkdir dir="retrieveOutput"/>
@@ -26,7 +26,7 @@
     </target>
 
 
-    <!-- Test out deploy and retrieve verbs for package 'mypkg' -->
+    <!-- Deploy and retrieve verbs for package 'mypkg' -->
     <target name="test">
       <!-- Upload the contents of the "mypkg" package -->
       <sf:deploy username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="src" rollbackOnError="true"/>
