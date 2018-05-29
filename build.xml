@@ -17,6 +17,11 @@
         </classpath>
     </taskdef>
 	
+
+   <!-- Test out deploy and retrieve verbs for package 'mypkg' -->
+    <target name="UpdateChangeSet">
+      <sf:deploy username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="src" rollbackOnError="true" autoUpdatePackage="true"/>
+    </target>
     <!-- Test out deploy and retrieve verbs for package 'mypkg' -->
     <target name="test">
       <!-- Upload the contents of the "mypkg" package -->
