@@ -12,7 +12,6 @@
         "ApexComponent",
         "ApexPage",
         "ApexTrigger",
-        "ConnectedApp",
         "CustomObject"
     ]
 }
