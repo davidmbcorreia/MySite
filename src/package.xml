@@ -28,7 +28,6 @@
         <members>CampaignMember</members>
         <members>Case</members>
         <members>CaseContactRole</members>
-        <members>CollaborationGroup</members>
         <members>CollaborationGroupMember</members>
         <members>Contact</members>
         <members>ContentVersion</members>
@@ -46,7 +45,6 @@
         <members>ForecastingOwnerAdjustment</members>
         <members>ForecastingQuota</members>
         <members>ForecastingTypeToCategory</members>
-        <members>Idea</members>
         <members>Job__c</members>
         <members>Knowledge__kav</members>
         <members>LRN_Exam_Area_Template__c</members>
@@ -75,10 +73,8 @@
         <members>ProfileSkill</members>
         <members>ProfileSkillEndorsement</members>
         <members>ProfileSkillUser</members>
-        <members>Quote</members>
         <members>QuoteLineItem</members>
         <members>RequestsForAccessSIQ</members>
-        <members>Scorecard</members>
         <members>ScorecardAssociation</members>
         <members>ScorecardMetric</members>
         <members>Site</members>
