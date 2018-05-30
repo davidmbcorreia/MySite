@@ -126,15 +126,17 @@
         "mmState": "clean"
     },
     "StellaxiusWeb.page": {
-        "createdById": "005580000018N8WAAU",
-        "createdByName": "Daniel Marujo",
-        "createdDate": "2016-12-22T13:29:12.000Z",
-        "fileName": "unpackaged/pages/StellaxiusWeb.page",
-        "fullName": "StellaxiusWeb",
         "id": "06658000001wFooAAE",
+        "name": "StellaxiusWeb",
+        "createdDate": "2016-12-22T13:29:12.000+0000",
+        "createdById": "005580000018N8WAAU",
+        "namespacePrefix": null,
         "lastModifiedById": "005580000036PGZAA2",
+        "lastModifiedDate": "2018-05-30T14:51:06.000+0000",
+        "fullName": "StellaxiusWeb",
+        "fileName": "unpackaged/pages/StellaxiusWeb.page",
+        "createdByName": "Daniel Marujo",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-28T09:08:07.000Z",
         "manageableState": "unmanaged",
         "type": "ApexPage",
         "mmState": "clean"
