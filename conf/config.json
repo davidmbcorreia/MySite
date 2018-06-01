@@ -45,7 +45,8 @@
 		},
 		"components" : {
 			"xmlTag" : "ApexComponent",
-			"acceptsAsterisk" : true
+			"acceptsAsterisk" : false,
+			"extension": ".component"
 		},
 		"corsWhitelistOrigins" : {
 			"xmlTag" : "CorsWhitelistOrigin",
