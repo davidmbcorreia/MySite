@@ -27,20 +27,6 @@
         "type": "ApexComponent",
         "mmState": "clean"
     },
-    "SiteFooter.component": {
-        "createdById": "005580000018MTNAA2",
-        "createdByName": "Frederico Rodrigues",
-        "createdDate": "2016-08-12T14:52:38.000Z",
-        "fileName": "unpackaged/components/SiteFooter.component",
-        "fullName": "SiteFooter",
-        "id": "09958000000Qb7nAAC",
-        "lastModifiedById": "005580000036PGZAA2",
-        "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-28T11:17:23.000Z",
-        "manageableState": "unmanaged",
-        "type": "ApexComponent",
-        "mmState": "clean"
-    },
     "StellaxiusTestimonials.component": {
         "createdById": "005580000018N8WAAU",
         "createdByName": "Daniel Marujo",
@@ -51,6 +37,20 @@
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
         "lastModifiedDate": "2018-05-28T11:17:24.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexComponent",
+        "mmState": "clean"
+    },
+    "SiteFooter.component": {
+        "createdById": "005580000018MTNAA2",
+        "createdByName": "Frederico Rodrigues",
+        "createdDate": "2016-08-12T14:52:38.000Z",
+        "fileName": "unpackaged/components/SiteFooter.component",
+        "fullName": "SiteFooter",
+        "id": "09958000000Qb7nAAC",
+        "lastModifiedById": "005580000036PGZAA2",
+        "lastModifiedByName": "David Correia",
+        "lastModifiedDate": "2018-05-28T11:17:23.000Z",
         "manageableState": "unmanaged",
         "type": "ApexComponent",
         "mmState": "clean"
@@ -126,15 +126,17 @@
         "mmState": "clean"
     },
     "StellaxiusWeb.page": {
-        "createdById": "005580000018N8WAAU",
-        "createdByName": "Daniel Marujo",
-        "createdDate": "2016-12-22T13:29:12.000Z",
-        "fileName": "unpackaged/pages/StellaxiusWeb.page",
-        "fullName": "StellaxiusWeb",
         "id": "06658000001wFooAAE",
+        "name": "StellaxiusWeb",
+        "createdDate": "2016-12-22T13:29:12.000+0000",
+        "createdById": "005580000018N8WAAU",
+        "namespacePrefix": null,
         "lastModifiedById": "005580000036PGZAA2",
+        "lastModifiedDate": "2018-05-30T14:51:06.000+0000",
+        "fullName": "StellaxiusWeb",
+        "fileName": "unpackaged/pages/StellaxiusWeb.page",
+        "createdByName": "Daniel Marujo",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-28T09:08:07.000Z",
         "manageableState": "unmanaged",
         "type": "ApexPage",
         "mmState": "clean"
@@ -498,7 +500,7 @@
         "id": "01p580000099dIoAAI",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:37.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:42.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -512,7 +514,7 @@
         "id": "01p580000099dInAAI",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:37.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:41.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -526,7 +528,7 @@
         "id": "01p580000099dImAAI",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:36.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:41.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -540,7 +542,7 @@
         "id": "01p58000008i7sgAAA",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:36.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:41.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -554,7 +556,7 @@
         "id": "01p58000008i7shAAA",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:37.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:42.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -568,7 +570,7 @@
         "id": "01p58000008i7siAAA",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:37.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:42.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -582,7 +584,7 @@
         "id": "01p58000008i7sjAAA",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:37.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:42.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -596,7 +598,7 @@
         "id": "01p580000080BJhAAM",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:36.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:41.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -610,21 +612,23 @@
         "id": "01p580000080BJiAAM",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:36.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:41.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
     },
     "ChangePasswordController.cls": {
-        "createdById": "005580000018MTNAA2",
-        "createdByName": "Frederico Rodrigues",
-        "createdDate": "2016-08-12T14:52:37.000Z",
-        "fileName": "unpackaged/classes/ChangePasswordController.cls",
-        "fullName": "ChangePasswordController",
         "id": "01p580000080BJfAAM",
+        "name": "ChangePasswordController",
+        "createdDate": "2016-08-12T14:52:37.000+0000",
+        "createdById": "005580000018MTNAA2",
+        "namespacePrefix": null,
         "lastModifiedById": "005580000036PGZAA2",
+        "lastModifiedDate": "2018-05-30T11:56:20.000+0000",
+        "fullName": "ChangePasswordController",
+        "fileName": "unpackaged/classes/ChangePasswordController.cls",
+        "createdByName": "Frederico Rodrigues",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:36.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -638,21 +642,7 @@
         "id": "01p580000080BJgAAM",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:36.000Z",
-        "manageableState": "unmanaged",
-        "type": "ApexClass",
-        "mmState": "clean"
-    },
-    "StellaxiusWebCandidateApplController.cls": {
-        "createdById": "005580000018N8WAAU",
-        "createdByName": "Daniel Marujo",
-        "createdDate": "2016-12-22T13:29:21.000Z",
-        "fileName": "unpackaged/classes/StellaxiusWebCandidateApplController.cls",
-        "fullName": "StellaxiusWebCandidateApplController",
-        "id": "01p58000008i7skAAA",
-        "lastModifiedById": "005580000036PGZAA2",
-        "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:37.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:41.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -666,21 +656,21 @@
         "id": "01p580000080BJlAAM",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:36.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:41.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
     },
-    "CommunitiesLoginControllerTest.cls": {
-        "createdById": "005580000018MTNAA2",
-        "createdByName": "Frederico Rodrigues",
-        "createdDate": "2016-08-12T14:52:39.000Z",
-        "fileName": "unpackaged/classes/CommunitiesLoginControllerTest.cls",
-        "fullName": "CommunitiesLoginControllerTest",
-        "id": "01p580000080BJmAAM",
+    "StellaxiusWebCandidateApplController.cls": {
+        "createdById": "005580000018N8WAAU",
+        "createdByName": "Daniel Marujo",
+        "createdDate": "2016-12-22T13:29:21.000Z",
+        "fileName": "unpackaged/classes/StellaxiusWebCandidateApplController.cls",
+        "fullName": "StellaxiusWebCandidateApplController",
+        "id": "01p58000008i7skAAA",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:36.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:42.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -694,7 +684,21 @@
         "id": "01p58000008i7slAAA",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:38.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:42.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass",
+        "mmState": "clean"
+    },
+    "CommunitiesLoginControllerTest.cls": {
+        "createdById": "005580000018MTNAA2",
+        "createdByName": "Frederico Rodrigues",
+        "createdDate": "2016-08-12T14:52:39.000Z",
+        "fileName": "unpackaged/classes/CommunitiesLoginControllerTest.cls",
+        "fullName": "CommunitiesLoginControllerTest",
+        "id": "01p580000080BJmAAM",
+        "lastModifiedById": "005580000036PGZAA2",
+        "lastModifiedByName": "David Correia",
+        "lastModifiedDate": "2018-05-29T16:55:41.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -708,7 +712,7 @@
         "id": "01p580000080BJjAAM",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:37.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:42.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -722,7 +726,7 @@
         "id": "01p580000080BJkAAM",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:37.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:42.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -736,7 +740,7 @@
         "id": "01p580000080BJdAAM",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:37.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:42.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -750,7 +754,7 @@
         "id": "01p580000080BJeAAM",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:37.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:42.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -764,7 +768,7 @@
         "id": "01p580000080BJbAAM",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:37.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:42.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -778,7 +782,7 @@
         "id": "01p580000080BJcAAM",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:37.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:42.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -792,7 +796,7 @@
         "id": "01p580000080BJpAAM",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:36.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:41.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -806,7 +810,7 @@
         "id": "01p580000080BJqAAM",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:36.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:41.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -820,7 +824,7 @@
         "id": "01p580000080BJnAAM",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:36.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:41.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -834,7 +838,7 @@
         "id": "01p580000080BJoAAM",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:36.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:41.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -848,7 +852,7 @@
         "id": "01p580000080BJrAAM",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:36.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:41.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -862,7 +866,7 @@
         "id": "01p580000080BJsAAM",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:36.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:41.000Z",
         "manageableState": "unmanaged",
         "type": "ApexClass",
         "mmState": "clean"
@@ -876,7 +880,7 @@
         "id": "01q58000000W1jAAAS",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:39.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:44.000Z",
         "manageableState": "unmanaged",
         "type": "ApexTrigger",
         "mmState": "clean"
@@ -890,7 +894,7 @@
         "id": "01q58000000W1jBAAS",
         "lastModifiedById": "005580000036PGZAA2",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-05-29T15:53:39.000Z",
+        "lastModifiedDate": "2018-05-29T16:55:44.000Z",
         "manageableState": "unmanaged",
         "type": "ApexTrigger",
         "mmState": "clean"
