@@ -1,6 +1,6 @@
 {
 	"version" : "37.0",
-	"fullName": "DynamicPackage",
+	"fullName": "CIPackage",
 	"dirs" : {
 		"applications" : {
 			"xmlTag" : "CustomApplication",
