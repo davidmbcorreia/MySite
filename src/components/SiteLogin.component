@@ -9,6 +9,7 @@
         <apex:inputSecret id="password" value="{!password}"/>
         <apex:outputText value=""/>
         <apex:commandButton action="{!login}" value="{!$Label.site.login_button}" id="loginButton"/>
+        <!-- crazy te  st-->
         <apex:outputText value=""/>
         <apex:outputText value=""/>
         <apex:outputText value=""/>

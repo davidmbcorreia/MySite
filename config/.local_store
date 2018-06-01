@@ -72,15 +72,17 @@
         "mmState": "clean"
     },
     "SiteLogin.component": {
-        "createdById": "005580000018MTNAA2",
-        "createdByName": "Frederico Rodrigues",
-        "createdDate": "2016-08-12T14:52:38.000Z",
-        "fileName": "unpackaged/components/SiteLogin.component",
-        "fullName": "SiteLogin",
         "id": "09958000000Qb7oAAC",
+        "name": "SiteLogin",
+        "createdDate": "2016-08-12T14:52:38.000+0000",
+        "createdById": "005580000018MTNAA2",
+        "namespacePrefix": null,
         "lastModifiedById": "005580000036PGZAA2",
+        "lastModifiedDate": "2018-06-01T14:50:08.000+0000",
+        "fullName": "SiteLogin",
+        "fileName": "unpackaged/components/SiteLogin.component",
+        "createdByName": "Frederico Rodrigues",
         "lastModifiedByName": "David Correia",
-        "lastModifiedDate": "2018-06-01T14:28:59.000Z",
         "manageableState": "unmanaged",
         "type": "ApexComponent",
         "mmState": "clean"

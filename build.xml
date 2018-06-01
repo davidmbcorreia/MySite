@@ -29,7 +29,7 @@
     <!-- Deploy and retrieve verbs for package 'mypkg' -->
     <target name="test">
       <!-- Upload the contents of the "mypkg" package -->
-      <sf:deploy username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="delta/src" autoUpdatePackage="true"/>
+      <sf:deploy username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="delta/src" autoUpdatePackage="true" allowMissingFiles="true"/>
     </target>
 
     <!-- Retrieve an unpackaged set of metadata from your org -->
