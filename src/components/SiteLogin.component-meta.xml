@@ -3,4 +3,5 @@
     <apiVersion>37.0</apiVersion>
     <description>Default Force.com Login component</description>
     <label>SiteLogin</label>
+    <!-- crazy test-->
 </ApexComponent>
