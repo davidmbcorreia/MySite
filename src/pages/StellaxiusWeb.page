@@ -12,7 +12,7 @@
             <meta prefix="og: http://ogp.me/ns#" property="og:title" content="The Rock" />
 			<meta prefix="og: http://ogp.me/ns#" property="og:type" content="article" />
             <title>STELLAXIUS</title>
-            <!-- Bootstrap Core CSS -->
+            <!-- Bootstrap Core CSS cncn-->
             <link href="{!URLFOR($Resource.stellaxius_resources, '/css/stellaxius_bootstrap.css')}" rel="stylesheet" />
             <!-- Animation Css -->
             <link href="{!URLFOR($Resource.stellaxius_resources, '/css/stellaxius_animate.css')}" rel="stylesheet" type="text/css" />
