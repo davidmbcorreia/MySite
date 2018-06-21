@@ -7,7 +7,7 @@
 <meta name="description" content="" />
 <meta name="author" content="Stellaxius" />
 <title>STELLAXIUS</title>
-<!-- Bootstrap Core CSS -->
+<!-- Bootstrap Core CSS dasd-->
 <link href="{!URLFOR($Resource.stellaxius_resources, '/css/stellaxius_bootstrap.css')}" rel="stylesheet" />
 <!-- Animation Css -->
 <link href="{!URLFOR($Resource.stellaxius_resources, '/css/stellaxius_animate.css')}" rel="stylesheet" type="text/css" />
